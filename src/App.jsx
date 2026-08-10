@@ -307,27 +307,19 @@ const App = () => {
           {/* Speaker Event Photo Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             <div className="bg-neutral-800/60 border border-neutral-700/60 rounded-2xl overflow-hidden">
-              <img src="/images/dct_speaking_consultant.jpg" alt="จาก Business สู่ AI Consultant" className="w-full h-48 object-cover" />
+              <img src="/images/dct_speaking_consultant.jpg" alt="จาก Business สู่ AI Consultant" className="w-full h-56 object-cover" />
               <div className="p-4">
                 <h4 className="font-bold text-sm text-white mb-1">จาก Business สู่ AI Consultant</h4>
                 <p className="text-neutral-400 text-xs font-light">บรรยายถ่ายทอดการประยุกต์ใช้ AI แก้โจทย์ธุรกิจจริง</p>
               </div>
             </div>
 
-            <div className="bg-neutral-800/60 border border-neutral-700/60 rounded-2xl overflow-hidden">
-              <img src="/images/dct_group.jpg" alt="ถ่ายภาพร่วมกับคณะผู้บริหาร DCT" className="w-full h-48 object-cover" />
-              <div className="p-4">
-                <h4 className="font-bold text-sm text-white mb-1">ถ่ายภาพร่วมกับผู้บริหาร DCT</h4>
-                <p className="text-neutral-400 text-xs font-light">ภาพบรรยากาศร่วมกับวิทยากรและผู้บริหารสภาดิจิทัลฯ</p>
-              </div>
+            <div className="bg-neutral-800/60 border border-neutral-700/60 rounded-2xl overflow-hidden shadow-lg">
+              <img src="/images/dct_group.jpg" alt="DCT Event" className="w-full h-full min-h-[224px] object-cover" />
             </div>
 
-            <div className="bg-neutral-800/60 border border-neutral-700/60 rounded-2xl overflow-hidden">
-              <img src="/images/dct_gift.jpg" alt="รับมอบของที่ระลึกจากสภาดิจิทัลฯ" className="w-full h-48 object-cover" />
-              <div className="p-4">
-                <h4 className="font-bold text-sm text-white mb-1">รับมอบของที่ระลึกจาก DCT</h4>
-                <p className="text-neutral-400 text-xs font-light">รับมอบของที่ระลึกจากคณะกรรมการสภาดิจิทัลฯ</p>
-              </div>
+            <div className="bg-neutral-800/60 border border-neutral-700/60 rounded-2xl overflow-hidden shadow-lg">
+              <img src="/images/dct_gift.jpg" alt="DCT Event" className="w-full h-full min-h-[224px] object-cover" />
             </div>
           </div>
 
