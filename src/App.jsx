@@ -222,7 +222,7 @@ const App = () => {
                 
                 {/* Image */}
                 <img 
-                  src="image.png" 
+                  src="/image.png" 
                   alt="Modty Profile" 
                   className="relative w-56 h-56 rounded-full object-cover border-4 border-white shadow-xl z-10"
                 />
@@ -326,7 +326,7 @@ const App = () => {
 
               <div className="lg:w-5/12 w-full">
                 <img 
-                  src="images/dct_speaking_vibe.jpg" 
+                  src="/images/dct_speaking_vibe.jpg" 
                   alt="Modty Speaker Girl in ICT" 
                   className="rounded-2xl w-full h-[300px] object-cover shadow-md border border-[#EFE8DE]"
                 />
@@ -337,7 +337,7 @@ const App = () => {
           {/* Event Photo Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-white border border-[#EFE8DE] rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
-              <img src="images/dct_speaking_consultant.jpg" alt="จาก Business สู่ AI Consultant" className="w-full h-52 object-cover" />
+              <img src="/images/dct_speaking_consultant.jpg" alt="จาก Business สู่ AI Consultant" className="w-full h-52 object-cover" />
               <div className="p-5">
                 <h4 className="font-bold text-[#2D2723] mb-1">จาก Business สู่ AI Consultant</h4>
                 <p className="text-[#5C534C] text-xs font-light">บรรยายถ่ายทอดการประยุกต์ใช้ AI แก้โจทย์ธุรกิจจริง</p>
@@ -345,7 +345,7 @@ const App = () => {
             </div>
 
             <div className="bg-white border border-[#EFE8DE] rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
-              <img src="images/dct_group.jpg" alt="ถ่ายภาพร่วมกับคณะผู้บริหาร DCT" className="w-full h-52 object-cover" />
+              <img src="/images/dct_group.jpg" alt="ถ่ายภาพร่วมกับคณะผู้บริหาร DCT" className="w-full h-52 object-cover" />
               <div className="p-5">
                 <h4 className="font-bold text-[#2D2723] mb-1">ถ่ายภาพร่วมกับผู้บริหาร DCT</h4>
                 <p className="text-[#5C534C] text-xs font-light">ภาพบรรยากาศร่วมกับวิทยากรและผู้บริหารสภาดิจิทัลฯ</p>
@@ -353,7 +353,7 @@ const App = () => {
             </div>
 
             <div className="bg-white border border-[#EFE8DE] rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition sm:col-span-2 lg:col-span-1">
-              <img src="images/dct_gift.jpg" alt="รับมอบของที่ระลึกจากสภาดิจิทัลฯ" className="w-full h-52 object-cover" />
+              <img src="/images/dct_gift.jpg" alt="รับมอบของที่ระลึกจากสภาดิจิทัลฯ" className="w-full h-52 object-cover" />
               <div className="p-5">
                 <h4 className="font-bold text-[#2D2723] mb-1">รับมอบของที่ระลึกจาก DCT</h4>
                 <p className="text-[#5C534C] text-xs font-light">รับมอบของที่ระลึกจากคณะกรรมการสภาดิจิทัลฯ</p>
