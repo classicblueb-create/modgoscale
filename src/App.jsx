@@ -234,9 +234,9 @@ const App = () => {
             <div className="lg:col-span-6">
               <div className="relative rounded-3xl overflow-hidden shadow-xl border border-neutral-300/80 bg-neutral-200">
                 <img 
-                  src="/my_photo.jpg?v=2" 
+                  src="/my_photo.jpg?v=3" 
                   alt="Modty Profile" 
-                  className="w-full h-[450px] sm:h-[540px] object-cover object-top hover:scale-105 transition duration-700"
+                  className="w-full h-[500px] sm:h-[620px] object-cover object-top hover:scale-105 transition duration-700"
                 />
               </div>
             </div>
