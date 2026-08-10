@@ -236,7 +236,7 @@ const App = () => {
                 <img 
                   src="/my_photo.jpg" 
                   alt="Modty Profile" 
-                  className="w-full h-[400px] sm:h-[520px] object-cover object-top hover:scale-105 transition duration-700"
+                  className="w-full h-[450px] sm:h-[540px] object-cover object-top hover:scale-105 transition duration-700"
                 />
               </div>
             </div>
@@ -480,7 +480,7 @@ const App = () => {
                 </div>
 
                 <div className="lg:w-5/12 w-full text-center lg:text-right border-t lg:border-t-0 lg:border-l border-neutral-800 pt-6 lg:pt-0 lg:pl-12 flex flex-col items-center lg:items-end">
-                  <img src="/course-cover.png" alt="Vibe Coding Cover" className="w-full max-w-[260px] rounded-xl mb-6 shadow-lg border border-neutral-700 hidden sm:block" />
+                  <img src="/course-cover.png" alt="Vibe Coding Cover" className="w-full max-w-[280px] rounded-2xl mb-6 shadow-xl border border-neutral-700" />
                   <div className="text-4xl sm:text-5xl font-heading font-extrabold text-white mb-1">2,990 <span className="text-base font-light text-neutral-400">THB</span></div>
                   <p className="text-neutral-500 text-xs line-through mb-1">ราคาปกติ 9,900 บาท</p>
                   <p className="text-rose-400 text-xs font-medium mb-6">** สำหรับ 10 ท่านแรกเท่านั้น</p>
@@ -712,8 +712,8 @@ const App = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-10">
                 
                 <div className="bg-neutral-100 p-5 sm:p-6 rounded-2xl border border-neutral-200 text-center flex flex-col justify-between">
-                  <div className="rounded-xl overflow-hidden mb-4 border border-neutral-200 shadow-sm">
-                    <img src="/property-workflow.png" alt="N8N Workflow" className="w-full h-44 object-cover" />
+                  <div className="rounded-xl overflow-hidden mb-4 border border-neutral-200 shadow-sm bg-white">
+                    <img src="/property-workflow.png" alt="N8N Workflow" className="w-full h-48 sm:h-52 object-contain" />
                   </div>
                   <div>
                     <h5 className="font-bold text-sm text-neutral-900 mb-1">🗄️ ฐานข้อมูลทรัพย์ NPA</h5>
@@ -722,8 +722,8 @@ const App = () => {
                 </div>
 
                 <div className="bg-neutral-100 p-5 sm:p-6 rounded-2xl border border-neutral-200 text-center flex flex-col justify-between">
-                  <div className="rounded-xl overflow-hidden mb-4 border border-neutral-200 shadow-sm">
-                    <img src="/property-line-chat.png" alt="LINE Property Bot" className="w-full h-44 object-cover" />
+                  <div className="rounded-xl overflow-hidden mb-4 border border-neutral-200 shadow-sm bg-white">
+                    <img src="/property-line-chat.png" alt="LINE Property Bot" className="w-full h-48 sm:h-52 object-contain" />
                   </div>
                   <div>
                     <h5 className="font-bold text-sm text-neutral-900 mb-1">🤖 LINE Search Bot</h5>
@@ -775,8 +775,8 @@ const App = () => {
             
             {/* Project 1 */}
             <div className="bg-white/90 border border-neutral-300 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition">
-              <div className="h-48 sm:h-56 bg-neutral-200 flex items-center justify-center p-6 text-center border-b border-neutral-200">
-                <span className="font-heading font-bold text-neutral-600 text-base sm:text-lg">Retirement Planning Web App</span>
+              <div className="h-48 sm:h-56 bg-neutral-200 flex items-center justify-center border-b border-neutral-200 overflow-hidden relative">
+                <img src="/retirement-app.png" alt="Retirement Planning Web App" className="w-full h-full object-cover" />
               </div>
               <div className="p-6 flex-grow flex flex-col justify-between">
                 <div>
