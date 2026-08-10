@@ -52,7 +52,6 @@ const CountUpNumber = ({ end, duration = 2000, prefix = '', suffix = '' }) => {
           const step = (timestamp) => {
             if (!startTime) startTime = timestamp;
             const progress = Math.min((timestamp - startTime) / duration, 1);
-            // Smooth Ease-Out Exponential Formula
             const easeOutProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
             setCount(Math.floor(easeOutProgress * end));
             if (progress < 1) {
@@ -235,8 +234,8 @@ const App = () => {
             <div className="lg:col-span-6">
               <div className="relative rounded-3xl overflow-hidden shadow-xl border border-neutral-300/80 bg-neutral-200">
                 <img 
-                  src="/image.png" 
-                  alt="Modty Founder of ModGoScale" 
+                  src="/my_photo.jpg" 
+                  alt="Modty Profile" 
                   className="w-full h-[400px] sm:h-[520px] object-cover object-top hover:scale-105 transition duration-700"
                 />
               </div>
@@ -480,7 +479,8 @@ const App = () => {
                   </div>
                 </div>
 
-                <div className="lg:w-5/12 w-full text-center lg:text-right border-t lg:border-t-0 lg:border-l border-neutral-800 pt-6 lg:pt-0 lg:pl-12">
+                <div className="lg:w-5/12 w-full text-center lg:text-right border-t lg:border-t-0 lg:border-l border-neutral-800 pt-6 lg:pt-0 lg:pl-12 flex flex-col items-center lg:items-end">
+                  <img src="/course-cover.png" alt="Vibe Coding Cover" className="w-full max-w-[260px] rounded-xl mb-6 shadow-lg border border-neutral-700 hidden sm:block" />
                   <div className="text-4xl sm:text-5xl font-heading font-extrabold text-white mb-1">2,990 <span className="text-base font-light text-neutral-400">THB</span></div>
                   <p className="text-neutral-500 text-xs line-through mb-1">ราคาปกติ 9,900 บาท</p>
                   <p className="text-rose-400 text-xs font-medium mb-6">** สำหรับ 10 ท่านแรกเท่านั้น</p>
@@ -632,6 +632,7 @@ const App = () => {
                 <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase">PRIVATE SESSION</span>
                 <h4 className="font-heading text-xl sm:text-2xl font-bold">รายละเอียดค่าบริการ</h4>
                 <div className="space-y-3 text-xs text-neutral-300 font-light border-y border-neutral-800 py-4">
+                  <div className="flex justify-between"><span>รูปแบบการปรึกษา</span><span className="text-white font-medium">Online Meeting</span></div>
                   <div className="flex justify-between"><span>การดูแลหลังปรึกษา</span><span className="text-white font-medium">ดูแลต่อ 7 วัน</span></div>
                   <div className="flex justify-between"><span>รีวิวยอดเดิม</span><span className="text-white font-medium">รวมในแพ็กเกจ</span></div>
                 </div>
@@ -710,20 +711,24 @@ const App = () => {
             <div className="bg-white/90 border border-neutral-300/80 rounded-3xl p-6 sm:p-8 lg:p-12 shadow-sm">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-10">
                 
-                <div className="bg-neutral-100 p-5 sm:p-6 rounded-2xl border border-neutral-200 text-center">
-                  <div className="h-36 sm:h-40 bg-neutral-200 rounded-xl flex items-center justify-center text-neutral-600 font-heading font-bold text-xs sm:text-sm mb-3">
-                    N8N WORKFLOW อัตโนมัติ
+                <div className="bg-neutral-100 p-5 sm:p-6 rounded-2xl border border-neutral-200 text-center flex flex-col justify-between">
+                  <div className="rounded-xl overflow-hidden mb-4 border border-neutral-200 shadow-sm">
+                    <img src="/property-workflow.png" alt="N8N Workflow" className="w-full h-44 object-cover" />
                   </div>
-                  <h5 className="font-bold text-sm text-neutral-900 mb-1">🗄️ ฐานข้อมูลทรัพย์ NPA</h5>
-                  <p className="text-xs text-neutral-600 font-light">คลังข้อมูลทรัพย์รอการขาย (NPA) ครบถ้วน รหัสทรัพย์ ราคา ที่ตั้ง ซิงก์กับ LINE Bot</p>
+                  <div>
+                    <h5 className="font-bold text-sm text-neutral-900 mb-1">🗄️ ฐานข้อมูลทรัพย์ NPA</h5>
+                    <p className="text-xs text-neutral-600 font-light">คลังข้อมูลทรัพย์รอการขาย (NPA) ครบถ้วน รหัสทรัพย์ ราคา ที่ตั้ง ซิงก์กับ LINE Bot</p>
+                  </div>
                 </div>
 
-                <div className="bg-neutral-100 p-5 sm:p-6 rounded-2xl border border-neutral-200 text-center">
-                  <div className="h-36 sm:h-40 bg-neutral-200 rounded-xl flex items-center justify-center text-neutral-600 font-heading font-bold text-xs sm:text-sm mb-3">
-                    LINE BOT ค้นหาทรัพย์
+                <div className="bg-neutral-100 p-5 sm:p-6 rounded-2xl border border-neutral-200 text-center flex flex-col justify-between">
+                  <div className="rounded-xl overflow-hidden mb-4 border border-neutral-200 shadow-sm">
+                    <img src="/property-line-chat.png" alt="LINE Property Bot" className="w-full h-44 object-cover" />
                   </div>
-                  <h5 className="font-bold text-sm text-neutral-900 mb-1">🤖 LINE Search Bot</h5>
-                  <p className="text-xs text-neutral-600 font-light">ลูกค้าพิมพ์ "บ้านเดี่ยว ชลบุรี 2-5 ล้าน" AI วิเคราะห์ความต้องการ ส่งการ์ดทรัพย์พร้อมรูปและราคา</p>
+                  <div>
+                    <h5 className="font-bold text-sm text-neutral-900 mb-1">🤖 LINE Search Bot</h5>
+                    <p className="text-xs text-neutral-600 font-light">ลูกค้าพิมพ์ "บ้านเดี่ยว ชลบุรี 2-5 ล้าน" AI วิเคราะห์ความต้องการ ส่งการ์ดทรัพย์พร้อมรูปและราคา</p>
+                  </div>
                 </div>
 
               </div>
@@ -794,8 +799,8 @@ const App = () => {
 
             {/* Project 2 (Dark Card) */}
             <div className="bg-neutral-900 text-white rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between">
-              <div className="h-48 sm:h-56 bg-neutral-800 flex items-center justify-center p-6 text-center border-b border-neutral-800">
-                <span className="font-heading font-bold text-white text-base sm:text-lg">Bestie Bot US</span>
+              <div className="h-48 sm:h-56 bg-neutral-800 flex items-center justify-center overflow-hidden border-b border-neutral-800 relative">
+                <img src="/bestie-bot.png" alt="Bestie Bot US" className="w-full h-full object-cover" />
               </div>
               <div className="p-6 flex-grow flex flex-col justify-between">
                 <div>
@@ -839,7 +844,8 @@ const App = () => {
 
           {/* Large Overlay Banner */}
           <div className="relative rounded-3xl overflow-hidden h-[300px] sm:h-[400px] bg-neutral-900 flex items-center justify-center shadow-2xl border border-neutral-800">
-            <div className="absolute inset-0 bg-neutral-900/70 backdrop-blur-xs z-10"></div>
+            <img src="/bg-automation.jpg" alt="Automation Background" className="absolute inset-0 w-full h-full object-cover opacity-40" />
+            <div className="absolute inset-0 bg-neutral-900/60 backdrop-blur-xs z-10"></div>
             <div className="relative z-20 text-center space-y-1 sm:space-y-2">
               <h2 className="font-heading text-4xl sm:text-7xl font-extrabold text-outline-white tracking-widest uppercase">AUTOMATE</h2>
               <h2 className="font-heading text-4xl sm:text-7xl font-extrabold text-outline-white tracking-widest uppercase">YOUR</h2>
@@ -863,8 +869,8 @@ const App = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-24">
             
             <div className="bg-white/90 border border-neutral-300 p-6 sm:p-8 rounded-3xl space-y-4 sm:space-y-6 shadow-sm">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-neutral-200 overflow-hidden mx-auto">
-                <div className="w-full h-full flex items-center justify-center font-bold text-neutral-600 text-sm">คุณนิสา</div>
+              <div className="w-16 h-16 rounded-full bg-neutral-200 overflow-hidden mx-auto border border-neutral-300">
+                <img src="/nisa.png" alt="คุณนิสา" className="w-full h-full object-cover" />
               </div>
               <p className="text-xs text-neutral-600 font-light leading-relaxed italic text-center">
                 "งานบัญชีที่เคยทำหลักชั่วโมง ตอนนี้กริ๊กเดียวเสร็จด้วย App Script ใช้เวลาไปบริหารภาพรวมธุรกิจได้เยอะมากเลยค่ะ"
@@ -876,11 +882,11 @@ const App = () => {
             </div>
 
             <div className="bg-white/90 border border-neutral-300 p-6 sm:p-8 rounded-3xl space-y-4 sm:space-y-6 shadow-sm">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-neutral-200 overflow-hidden mx-auto">
-                <div className="w-full h-full flex items-center justify-center font-bold text-neutral-600 text-sm">คุณกิ๊บ</div>
+              <div className="w-16 h-16 rounded-full bg-neutral-200 overflow-hidden mx-auto border border-neutral-300">
+                <img src="/gib.png" alt="คุณกิ๊บ" className="w-full h-full object-cover" />
               </div>
               <p className="text-xs text-neutral-600 font-light leading-relaxed italic text-center">
-                "พอร์ตอสังหาดีขึ้นเยอะมาก ระบบ AI Vibe Coding ช่วยให้การทำคอนเทนต์เป็นเรื่องง่ายและลูกค้าทักไวขึ้นชัดเจน"
+                "พอร์ตอสังหาสวยขึ้นเยอะมาก ระบบ AI Vibe Coding ช่วยให้การทำคอนเทนต์เป็นเรื่องง่ายและลูกค้าทักไวขึ้นชัดเจน"
               </p>
               <div className="text-center pt-2">
                 <h5 className="font-bold text-sm text-neutral-900">คุณกิ๊บ</h5>
@@ -889,14 +895,14 @@ const App = () => {
             </div>
 
             <div className="bg-white/90 border border-neutral-300 p-6 sm:p-8 rounded-3xl space-y-4 sm:space-y-6 shadow-sm">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-neutral-200 overflow-hidden mx-auto">
-                <div className="w-full h-full flex items-center justify-center font-bold text-neutral-600 text-sm">คุณพัด</div>
+              <div className="w-16 h-16 rounded-full bg-neutral-200 overflow-hidden mx-auto border border-neutral-300">
+                <img src="/pat.png" alt="คุณพัต" className="w-full h-full object-cover" />
               </div>
               <p className="text-xs text-neutral-600 font-light leading-relaxed italic text-center">
-                "ระบบ Automate ตอบโจทย์การ Scale ธุรกิจมากๆ ช่วยลดงานจุกจิก และควบคุมคุณภาพได้ดีโดยไม่ต้องจ้างพนักงานเพิ่มเยอะ"
+                "ระบบ Automate ตอบโจทย์การ Scale ธุรกิจมากๆ ช่วยลดงานจุกจิก และคุมคุณภาพได้ดีโดยไม่ต้องจ้างพนักงานเพิ่มเยอะ"
               </p>
               <div className="text-center pt-2">
-                <h5 className="font-bold text-sm text-neutral-900">คุณพัด</h5>
+                <h5 className="font-bold text-sm text-neutral-900">คุณพัต</h5>
                 <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase">BUSINESS OWNER</span>
               </div>
             </div>
