@@ -25,10 +25,7 @@ import {
   Sparkles,
   Sheet,
   Mail,
-  Clock,
-  Presentation,
-  Sliders,
-  Wrench
+  Clock
 } from 'lucide-react';
 
 const App = () => {
@@ -76,7 +73,6 @@ const App = () => {
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-8 items-center">
               <button onClick={() => scrollToSection('about')} className="text-slate-600 hover:text-purple-600 transition font-medium">เกี่ยวกับเรา</button>
-              <button onClick={() => scrollToSection('speaker')} className="text-slate-600 hover:text-purple-600 transition font-medium">ผลงานวิทยากร</button>
               <button onClick={() => scrollToSection('course')} className="text-slate-600 hover:text-purple-600 transition font-medium">คอร์สเรียน</button>
               <button onClick={() => scrollToSection('consult')} className="text-slate-600 hover:text-purple-600 transition font-medium">ที่ปรึกษา</button>
               <button onClick={() => scrollToSection('development')} className="text-slate-600 hover:text-purple-600 transition font-medium">รับทำเว็บไซต์</button>
@@ -105,7 +101,6 @@ const App = () => {
           <div className="md:hidden bg-white border-b border-slate-200">
             <div className="px-4 pt-2 pb-6 space-y-2">
               <button onClick={() => scrollToSection('about')} className="block w-full text-left px-3 py-3 text-slate-600 hover:bg-purple-50 hover:text-purple-700 rounded-md font-medium">เกี่ยวกับเรา</button>
-              <button onClick={() => scrollToSection('speaker')} className="block w-full text-left px-3 py-3 text-slate-600 hover:bg-purple-50 hover:text-purple-700 rounded-md font-medium">ผลงานวิทยากร</button>
               <button onClick={() => scrollToSection('course')} className="block w-full text-left px-3 py-3 text-slate-600 hover:bg-purple-50 hover:text-purple-700 rounded-md font-medium">คอร์สเรียน</button>
               <button onClick={() => scrollToSection('consult')} className="block w-full text-left px-3 py-3 text-slate-600 hover:bg-purple-50 hover:text-purple-700 rounded-md font-medium">ที่ปรึกษา</button>
               <button onClick={() => scrollToSection('development')} className="block w-full text-left px-3 py-3 text-slate-600 hover:bg-purple-50 hover:text-purple-700 rounded-md font-medium">รับทำเว็บไซต์</button>
@@ -274,114 +269,11 @@ const App = () => {
         </div>
       </section>
 
-      {/* Speaker Section */}
-      <section id="speaker" className="py-24 bg-white scroll-mt-16 border-t border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-sm font-semibold mb-6">
-            <Presentation size={16} /> KEYNOTE SPEAKER & CORPORATE TRAINER
-          </div>
-          
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-slate-900">
-            วิทยากรบรรยายเทคโนโลยี <span className="bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">และ AI ระดับประเทศ</span>
-          </h2>
-          <p className="text-slate-600 text-lg font-light mb-12 max-w-3xl">
-            มดได้รับเกียรติเป็นวิทยากรบรรยายและจัด In-House Workshop ด้าน AI, Vibe Coding และ Digital Transformation ให้กับสถาบันและองค์กรชั้นนำ
-          </p>
-
-          {/* Event Card: Girl in ICT by DCT */}
-          <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 md:p-10 mb-12 shadow-sm hover:shadow-md transition">
-            <div className="flex flex-col lg:flex-row gap-8 items-center">
-              <div className="lg:w-7/12 space-y-4">
-                <div className="flex flex-wrap gap-2">
-                  <span className="bg-purple-100 text-purple-700 text-xs font-bold px-3 py-1 rounded-full border border-purple-200">
-                    NATIONAL EVENT
-                  </span>
-                  <span className="bg-pink-100 text-pink-700 text-xs font-bold px-3 py-1 rounded-full border border-pink-200">
-                    Girl in ICT by DCT
-                  </span>
-                </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-slate-900">
-                  สภาดิจิทัลเพื่อเศรษฐกิจและสังคมแห่งประเทศไทย (DCT)
-                </h3>
-                <p className="text-slate-600 font-light text-base leading-relaxed">
-                  วิทยากรบรรยายในโครงการ <strong>Girl in ICT</strong> จัดโดย <strong>สภาดิจิทัลเพื่อเศรษฐกิจและสังคมแห่งประเทศไทย</strong> ส่งเสริมศักยภาพของผู้หญิงและคนรุ่นใหม่ในการประยุกต์ใช้ AI สร้างนวัตกรรมดิจิทัล
-                </p>
-                <div className="bg-white p-5 rounded-2xl border border-slate-200 space-y-2 text-sm text-slate-700">
-                  <div className="flex items-start gap-2">
-                    <CheckCircle size={18} className="text-purple-600 shrink-0 mt-0.5" />
-                    <span><strong>หัวข้อการบรรยาย:</strong> "Girl in ICT: ไม่เคยเขียนโค้ด ก็สร้างเว็บและแชตบอทได้ — สร้างระบบได้ด้วย AI จากไอเดีย สู่เว็บและแชตบอทที่ใช้งานจริง"</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <CheckCircle size={18} className="text-purple-600 shrink-0 mt-0.5" />
-                    <span><strong>แนวคิด Vibe Coding:</strong> ทุกไอเดียเป็นจริงได้ด้วย AI โดยไม่ต้องมีพื้นฐานการเขียนโค้ดมาก่อน</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <CheckCircle size={18} className="text-purple-600 shrink-0 mt-0.5" />
-                    <span><strong>เส้นทางเติบโต:</strong> จากการทำธุรกิจ สู่การเป็น AI Consultant ที่สร้างระบบอัตโนมัติให้ธุรกิจ</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="lg:w-5/12 w-full">
-                <img 
-                  src="images/dct_speaking_vibe.jpg" 
-                  alt="Modty Speaker Girl in ICT" 
-                  className="rounded-2xl w-full h-[300px] object-cover shadow-md border border-slate-200"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Event Photo Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
-              <img src="images/dct_speaking_consultant.jpg" alt="จาก Business สู่ AI Consultant" className="w-full h-52 object-cover" />
-              <div className="p-5">
-                <h4 className="font-bold text-slate-800 mb-1">จาก Business สู่ AI Consultant</h4>
-                <p className="text-slate-500 text-xs font-light">บรรยายถ่ายทอดการประยุกต์ใช้ AI แก้โจทย์ธุรกิจจริง</p>
-              </div>
-            </div>
-
-            <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
-              <img src="images/dct_group.jpg" alt="ถ่ายภาพร่วมกับคณะผู้บริหาร DCT" className="w-full h-52 object-cover" />
-              <div className="p-5">
-                <h4 className="font-bold text-slate-800 mb-1">ถ่ายภาพร่วมกับผู้บริหาร DCT</h4>
-                <p className="text-slate-500 text-xs font-light">ภาพบรรยากาศร่วมกับวิทยากรและผู้บริหารสภาดิจิทัลฯ</p>
-              </div>
-            </div>
-
-            <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition sm:col-span-2 lg:col-span-1">
-              <img src="images/dct_gift.jpg" alt="รับมอบของที่ระลึกจากสภาดิจิทัลฯ" className="w-full h-52 object-cover" />
-              <div className="p-5">
-                <h4 className="font-bold text-slate-800 mb-1">รับมอบของที่ระลึกจาก DCT</h4>
-                <p className="text-slate-500 text-xs font-light">รับมอบของที่ระลึกจากคณะกรรมการสภาดิจิทัลฯ</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
       {/* 1. Education Section */}
-      <section id="course" className="py-24 bg-white scroll-mt-16 border-t border-slate-100">
+      <section id="course" className="py-24 bg-white scroll-mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-sm font-semibold mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-sm font-semibold mb-8">
               SERVICE 1: EDUCATION
-          </div>
-
-          {/* Customize Notice Alert Box */}
-          <div className="mb-12 bg-purple-50 border border-purple-200 p-5 rounded-2xl flex items-center gap-4 shadow-sm">
-            <div className="bg-purple-600 text-white p-3 rounded-xl shrink-0">
-              <Sliders size={22} />
-            </div>
-            <div>
-              <p className="font-bold text-slate-900 text-base">
-                ✨ ปรับ Customize ตามผู้เรียนและเป้าหมายต้องการได้ทุกคอร์ส!
-              </p>
-              <p className="text-slate-600 text-sm font-light">
-                ทุกคอร์สและ Workshop สามารถปรับแต่งเนื้อหา โจทย์โปรเจกต์ และระยะเวลาให้เข้ากับความต้องการเฉพาะของผู้เรียนหรือองค์กรได้ (Private & In-House Training)
-              </p>
-            </div>
           </div>
           
           {/* Main Course Highlight */}
@@ -494,12 +386,11 @@ const App = () => {
             </div>
           </div>
 
-          {/* Short Courses Section */}
+          {/* New Short Courses Section */}
           <div className="border-t border-slate-200 pt-16">
             <h3 className="text-2xl md:text-3xl font-bold text-center mb-12 text-slate-900">คอร์สระยะสั้น & Workshop <span className="bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">เฉพาะทาง</span></h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-              
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Course 1: AI System Architect */}
               <div className="bg-white border border-slate-200 rounded-2xl p-8 hover:border-purple-300 transition duration-300 flex flex-col relative group shadow-sm hover:shadow-xl hover:shadow-purple-50">
                 <div className="absolute top-0 right-0 p-4 opacity-50 group-hover:opacity-100 transition">
@@ -546,99 +437,7 @@ const App = () => {
                 </div>
               </div>
 
-              {/* Course 2: ChatGPT Work + Codex */}
-              <div className="bg-white border-2 border-purple-400 rounded-2xl p-8 hover:border-purple-500 transition duration-300 flex flex-col relative group shadow-md hover:shadow-xl hover:shadow-purple-100">
-                <div className="absolute top-0 right-0 p-4 opacity-50 group-hover:opacity-100 transition">
-                   <Bot size={40} className="text-purple-300" />
-                </div>
-                
-                <div className="mb-6">
-                  <div className="inline-block bg-gradient-to-r from-purple-600 to-pink-500 text-white text-xs font-bold px-2 py-1 rounded mb-3">BEST MATCH FOR MODTY BRAND</div>
-                  <h4 className="text-2xl font-bold text-slate-800 mb-2">ChatGPT Work + Codex</h4>
-                  <p className="text-slate-500 font-light">สร้าง AI Operating System ส่วนตัว</p>
-                </div>
-
-                <div className="space-y-4 mb-8 flex-grow">
-                   <div className="bg-purple-50 p-4 rounded-xl border border-purple-100">
-                      <p className="text-sm text-slate-700 font-light mb-2"><span className="text-purple-700 font-semibold">จุดเด่น:</span> เปลี่ยน ChatGPT จากเครื่องมือถามตอบ ให้เป็นผู้ช่วยทำงานและสร้างระบบส่วนตัว</p>
-                   </div>
-                   <ul className="space-y-2 text-sm text-slate-600 font-light">
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-purple-600 shrink-0"/>
-                        <span><strong>Projects & Apps:</strong> เชื่อม Gmail, Drive, Notion, GitHub</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-purple-600 shrink-0"/>
-                        <span><strong>Codex Tools:</strong> สร้างเว็บไซต์ เครื่องมือ และ Agent ทีม AI</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-purple-600 shrink-0"/>
-                        <span><strong>Sample Projects:</strong> AI Calendar, Morning Brief, Founder OS</span>
-                      </li>
-                   </ul>
-                </div>
-
-                <div className="border-t border-slate-100 pt-6">
-                   <div className="flex justify-between items-end mb-4">
-                      <div>
-                        <p className="text-xs text-slate-400 line-through">ราคาปกติ 6,900 บาท</p>
-                        <p className="text-2xl font-bold text-slate-900">2,900 THB</p>
-                      </div>
-                      <span className="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded border border-slate-200">Private / Online</span>
-                   </div>
-                   <a href={lineLink} target="_blank" rel="noreferrer" className="block w-full text-center bg-purple-600 text-white hover:bg-purple-700 font-medium py-3 rounded-lg transition shadow-sm">
-                      สอบถามรายละเอียด
-                   </a>
-                </div>
-              </div>
-
-              {/* Course 3: AI Visual Content System */}
-              <div className="bg-white border border-slate-200 rounded-2xl p-8 hover:border-pink-300 transition duration-300 flex flex-col relative group shadow-sm hover:shadow-xl hover:shadow-pink-50">
-                <div className="absolute top-0 right-0 p-4 opacity-50 group-hover:opacity-100 transition">
-                   <Palette size={40} className="text-pink-200" />
-                </div>
-                
-                <div className="mb-6">
-                  <div className="inline-block bg-pink-100 text-pink-700 text-xs font-bold px-2 py-1 rounded mb-3">VISUAL CONTENT</div>
-                  <h4 className="text-2xl font-bold text-slate-800 mb-2">AI Visual Content System</h4>
-                  <p className="text-slate-500 font-light">สร้างภาพ คารูเซล และโฆษณาเป็นระบบ</p>
-                </div>
-
-                <div className="space-y-4 mb-8 flex-grow">
-                   <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                      <p className="text-sm text-slate-600 font-light mb-2"><span className="text-pink-600 font-semibold">เหมาะสำหรับ:</span> Creator, Marketer, เจ้าของแบรนด์, Agency, ร้านค้าออนไลน์</p>
-                   </div>
-                   <ul className="space-y-2 text-sm text-slate-600 font-light">
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-pink-500 shrink-0"/>
-                        <span><strong>Design System:</strong> ล็อกใบหน้า สินค้า สี ฟอนต์ และสไตล์</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-pink-500 shrink-0"/>
-                        <span><strong>Carousel Theme:</strong> สร้าง Carousel ให้ทุกหน้าเป็นธีมเดียวกัน</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-pink-500 shrink-0"/>
-                        <span><strong>AI Tool Build:</strong> สร้าง AI Carousel Tool จัดรูปข้อความ auto</span>
-                      </li>
-                   </ul>
-                </div>
-
-                <div className="border-t border-slate-100 pt-6">
-                   <div className="flex justify-between items-end mb-4">
-                      <div>
-                        <p className="text-xs text-slate-400 line-through">ราคาปกติ 5,900 บาท</p>
-                        <p className="text-2xl font-bold text-slate-900">2,500 THB</p>
-                      </div>
-                      <span className="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded border border-slate-200">Workshop</span>
-                   </div>
-                   <a href={lineLink} target="_blank" rel="noreferrer" className="block w-full text-center bg-white border border-pink-500 text-pink-500 hover:bg-pink-500 hover:text-white font-medium py-3 rounded-lg transition">
-                      จองคิวเรียน
-                   </a>
-                </div>
-              </div>
-
-              {/* Course 4: AI Video & Content Mastery */}
+              {/* Course 2: AI Video & Content Mastery */}
               <div className="bg-white border border-slate-200 rounded-2xl p-8 hover:border-pink-300 transition duration-300 flex flex-col relative group shadow-sm hover:shadow-xl hover:shadow-pink-50">
                 <div className="absolute top-0 right-0 p-4 opacity-50 group-hover:opacity-100 transition">
                    <Clapperboard size={40} className="text-pink-200" />
@@ -646,26 +445,26 @@ const App = () => {
                 
                 <div className="mb-6">
                   <div className="inline-block bg-pink-100 text-pink-700 text-xs font-bold px-2 py-1 rounded mb-3">CONTENT CREATOR</div>
-                  <h4 className="text-2xl font-bold text-slate-800 mb-2">AI Video & Motion Workshop</h4>
-                  <p className="text-slate-500 font-light">สร้างวิดีโอ AI & Motion จากโค้ด</p>
+                  <h4 className="text-2xl font-bold text-slate-800 mb-2">AI Video & Content</h4>
+                  <p className="text-slate-500 font-light">ปั้นคลิปรีวิวระดับโปร ด้วย AI</p>
                 </div>
 
                 <div className="space-y-4 mb-8 flex-grow">
                    <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                      <p className="text-sm text-slate-600 font-light mb-2"><span className="text-pink-600 font-semibold">เหมาะสำหรับ:</span> Creator, Video Editor, แบรนด์ และทีม Social Media</p>
+                      <p className="text-sm text-slate-600 font-light mb-2"><span className="text-pink-600 font-semibold">เหมาะสำหรับ:</span> Content Creator, นักรีวิว, สาย Affiliate ที่ต้องการงานคุณภาพสูง</p>
                    </div>
                    <ul className="space-y-2 text-sm text-slate-600 font-light">
                       <li className="flex gap-2">
                         <CheckCircle size={16} className="text-pink-500 shrink-0"/>
-                        <span><strong>Talking Avatar & Voice:</strong> สร้าง AI Talking Person & Voice</span>
+                        <span><strong>Next-Gen Tools:</strong> สอนใช้ Sora, Grok, Flow</span>
                       </li>
                       <li className="flex gap-2">
                         <CheckCircle size={16} className="text-pink-500 shrink-0"/>
-                        <span><strong>HTML Motion Video:</strong> สร้าง Motion Video จาก HTML</span>
+                        <span><strong>Affiliate Workflow:</strong> ทำคลิปรีวิวให้ขายได้จริง</span>
                       </li>
                       <li className="flex gap-2">
                         <CheckCircle size={16} className="text-pink-500 shrink-0"/>
-                        <span><strong>AI Video Editor:</strong> สร้างระบบ AI Video Editor ส่วนตัว</span>
+                        <span><strong>Consistency:</strong> วางแผน Prompt ให้งานต่อเนื่อง</span>
                       </li>
                    </ul>
                 </div>
@@ -684,100 +483,8 @@ const App = () => {
                 </div>
               </div>
 
-              {/* Course 5: AI Automation + AI Agent */}
-              <div className="bg-white border border-slate-200 rounded-2xl p-8 hover:border-emerald-300 transition duration-300 flex flex-col relative group shadow-sm hover:shadow-xl hover:shadow-emerald-50">
-                <div className="absolute top-0 right-0 p-4 opacity-50 group-hover:opacity-100 transition">
-                   <Zap size={40} className="text-emerald-200" />
-                </div>
-                
-                <div className="mb-6">
-                  <div className="inline-block bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-1 rounded mb-3">FOR BUSINESS AUTOMATION</div>
-                  <h4 className="text-2xl font-bold text-slate-800 mb-2">AI Automation & Agent</h4>
-                  <p className="text-slate-500 font-light">สร้างระบบอัตโนมัติ n8n & AI Agent</p>
-                </div>
-
-                <div className="space-y-4 mb-8 flex-grow">
-                   <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                      <p className="text-sm text-slate-600 font-light mb-2"><span className="text-emerald-600 font-semibold">สอนร่วมกับ:</span> Partner AI Engineer เพิ่มความน่าเชื่อถือทางด้าน Technical</p>
-                   </div>
-                   <ul className="space-y-2 text-sm text-slate-600 font-light">
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-emerald-500 shrink-0"/>
-                        <span><strong>n8n Workflows:</strong> เชื่อม Forms, Gmail, Sheets, LINE OA</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-emerald-500 shrink-0"/>
-                        <span><strong>AI Agent Tools:</strong> ตอบลูกค้า สรุปอีเมล CRM Follow-up</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-emerald-500 shrink-0"/>
-                        <span><strong>Notion Templates:</strong> แจก Template Workflows พร้อมใช้</span>
-                      </li>
-                   </ul>
-                </div>
-
-                <div className="border-t border-slate-100 pt-6">
-                   <div className="flex justify-between items-end mb-4">
-                      <div>
-                        <p className="text-xs text-slate-400 line-through">ราคาปกติ 8,900 บาท</p>
-                        <p className="text-2xl font-bold text-slate-900">4,900 THB</p>
-                      </div>
-                      <span className="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded border border-slate-200">Private / Online</span>
-                   </div>
-                   <a href={lineLink} target="_blank" rel="noreferrer" className="block w-full text-center bg-white border border-emerald-500 text-emerald-600 hover:bg-emerald-500 hover:text-white font-medium py-3 rounded-lg transition">
-                      จองเวลาเรียน
-                   </a>
-                </div>
-              </div>
-
-              {/* Course 6: Build Your Own AI Content Tool */}
-              <div className="bg-white border border-slate-200 rounded-2xl p-8 hover:border-indigo-300 transition duration-300 flex flex-col relative group shadow-sm hover:shadow-xl hover:shadow-indigo-50">
-                <div className="absolute top-0 right-0 p-4 opacity-50 group-hover:opacity-100 transition">
-                   <Wrench size={40} className="text-indigo-200" />
-                </div>
-                
-                <div className="mb-6">
-                  <div className="inline-block bg-indigo-100 text-indigo-700 text-xs font-bold px-2 py-1 rounded mb-3">PROJECT-BASED</div>
-                  <h4 className="text-2xl font-bold text-slate-800 mb-2">สร้าง AI Content Tool ส่วนตัว</h4>
-                  <p className="text-slate-500 font-light">เรียนจบได้เครื่องมือกลับไปใช้งานจริง</p>
-                </div>
-
-                <div className="space-y-4 mb-8 flex-grow">
-                   <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
-                      <p className="text-sm text-slate-600 font-light mb-2"><span className="text-indigo-600 font-semibold">จุดเด่น:</span> เลือกสร้าง Tool ของตัวเอง เช่น Carousel, UGC Generator, Script Generator</p>
-                   </div>
-                   <ul className="space-y-2 text-sm text-slate-600 font-light">
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-indigo-500 shrink-0"/>
-                        <span><strong>Prompt System:</strong> ออกแบบระบบ Prompt & UX ก่อนสร้าง</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-indigo-500 shrink-0"/>
-                        <span><strong>Drive Auto-save:</strong> บันทึกผลลัพธ์เข้า Google Drive อัตโนมัติ</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-indigo-500 shrink-0"/>
-                        <span><strong>Digital Product:</strong> แพ็กเป็นบริการ หรือขายเป็น Digital Product</span>
-                      </li>
-                   </ul>
-                </div>
-
-                <div className="border-t border-slate-100 pt-6">
-                   <div className="flex justify-between items-end mb-4">
-                      <div>
-                        <p className="text-xs text-slate-400 line-through">ราคาปกติ 6,900 บาท</p>
-                        <p className="text-2xl font-bold text-slate-900">3,500 THB</p>
-                      </div>
-                      <span className="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded border border-slate-200">Workshop</span>
-                   </div>
-                   <a href={lineLink} target="_blank" rel="noreferrer" className="block w-full text-center bg-white border border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white font-medium py-3 rounded-lg transition">
-                      สนใจทำโปรเจกต์
-                   </a>
-                </div>
-              </div>
-
-              {/* Course 7: Google Automation & Simple Web */}
-              <div className="bg-white border border-slate-200 rounded-2xl p-8 hover:border-green-300 transition duration-300 flex flex-col relative group shadow-sm hover:shadow-xl hover:shadow-green-50 sm:col-span-2 lg:col-span-1">
+              {/* Course 3: Google Automation & Simple Web */}
+              <div className="bg-white border border-slate-200 rounded-2xl p-8 hover:border-green-300 transition duration-300 flex flex-col relative group shadow-sm hover:shadow-xl hover:shadow-green-50">
                 <div className="absolute top-0 right-0 p-4 opacity-50 group-hover:opacity-100 transition">
                    <Sheet size={40} className="text-green-200" />
                 </div>
@@ -823,81 +530,6 @@ const App = () => {
               </div>
 
             </div>
-
-            {/* Mini Courses Overview */}
-            <div className="bg-slate-50 border border-slate-200 p-8 rounded-3xl mb-16">
-              <h4 className="font-bold text-xl text-slate-900 mb-2 text-center">คอร์สเสริม & Mini Workshops เฉพาะทาง</h4>
-              <p className="text-slate-500 text-sm font-light text-center mb-8">เปิดรับในรูปแบบ Mini Course, Special Workshop หรือ In-House Bonus</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {[
-                  { title: 'Google Sheets Dashboard', desc: 'ทำ Dashboard ด้วย AI & Apps Script' },
-                  { title: 'Claude Skills สำหรับธุรกิจ', desc: 'สร้างและใช้ Claude Skills ปลดล็อกงาน' },
-                  { title: 'Prompt Eng + Gemini Gems', desc: 'สร้าง AI ผู้ช่วยประจำตำแหน่ง' },
-                  { title: 'Reverse Engineer Systems', desc: 'แกะโค้ด เว็บไซต์ และ Workflow' },
-                  { title: 'Digital Product & Sales Auto', desc: 'สร้างระบบขายและส่งสินค้าอัตโนมัติ' },
-                  { title: 'AI Tools 10 ตัวเริ่มต้น', desc: 'ปูพื้นฐาน AI ทำงานเร็วขึ้น 10x' },
-                  { title: 'Build with Gemini Canvas', desc: 'ตั้งแต่ปั้นไอเดียจน Deploy เว็บจริง' }
-                ].map((item, idx) => (
-                  <div key={idx} className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                    <span className="text-purple-600 font-bold text-xs">MINI WORKSHOP #{idx+1}</span>
-                    <h5 className="font-bold text-slate-800 text-sm mt-1">{item.title}</h5>
-                    <p className="text-slate-500 text-xs font-light mt-1">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Service & Pricing Tiers Grid */}
-            <div className="bg-white border border-slate-200 rounded-3xl p-8 shadow-sm">
-              <h4 className="font-bold text-2xl text-slate-900 mb-2 text-center">โครงสร้างบริการและราคาแนะนำ (Service Tiers)</h4>
-              <p className="text-slate-500 text-sm font-light text-center mb-8">เลือกรูปแบบที่เหมาะกับงบประมาณและเป้าหมายของคุณ</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
-                  <span className="text-xs font-bold text-purple-600 bg-purple-100 px-2.5 py-1 rounded-md">ระดับเริ่มต้น</span>
-                  <h5 className="font-bold text-slate-900 text-lg mt-3">eBook / Prompt Pack</h5>
-                  <p className="text-slate-500 text-xs font-light mb-3">Template และชุดคำสั่งสำเร็จรูป</p>
-                  <p className="text-2xl font-bold text-purple-600">299 – 990 THB</p>
-                </div>
-
-                <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
-                  <span className="text-xs font-bold text-purple-600 bg-purple-100 px-2.5 py-1 rounded-md">Workshop</span>
-                  <h5 className="font-bold text-slate-900 text-lg mt-3">เรียนสด 2–3 ชั่วโมง</h5>
-                  <p className="text-slate-500 text-xs font-light mb-3">ทำเสร็จ 1 โปรเจกต์ใช้งานจริง</p>
-                  <p className="text-2xl font-bold text-purple-600">1,500 – 2,900 THB</p>
-                </div>
-
-                <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
-                  <span className="text-xs font-bold text-purple-600 bg-purple-100 px-2.5 py-1 rounded-md">คอร์สหลัก</span>
-                  <h5 className="font-bold text-slate-900 text-lg mt-3">คอร์สเรียน + Community</h5>
-                  <p className="text-slate-500 text-xs font-light mb-3">วิดีโอ + Dashboard + Prompt + ชุมชนดูแล</p>
-                  <p className="text-2xl font-bold text-purple-600">2,900 – 4,900 THB</p>
-                </div>
-
-                <div className="bg-purple-50 p-6 rounded-2xl border border-purple-200">
-                  <span className="text-xs font-bold text-white bg-purple-600 px-2.5 py-1 rounded-md">เรียนส่วนตัว</span>
-                  <h5 className="font-bold text-slate-900 text-lg mt-3">Customized Private</h5>
-                  <p className="text-slate-500 text-xs font-light mb-3">ปรับเนื้อหาและโค้ชตามโปรเจกต์ผู้เรียน</p>
-                  <p className="text-2xl font-bold text-purple-700">5,900 – 9,900 THB</p>
-                </div>
-
-                <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
-                  <span className="text-xs font-bold text-pink-600 bg-pink-100 px-2.5 py-1 rounded-md">Consultation</span>
-                  <h5 className="font-bold text-slate-900 text-lg mt-3">ที่ปรึกษาธุรกิจ & AI</h5>
-                  <p className="text-slate-500 text-xs font-light mb-3">วิเคราะห์และวางระบบตรงจุด</p>
-                  <p className="text-2xl font-bold text-pink-600">เริ่ม 2,000 THB/ชม.</p>
-                </div>
-
-                <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
-                  <span className="text-xs font-bold text-rose-600 bg-rose-100 px-2.5 py-1 rounded-md">Done-for-You</span>
-                  <h5 className="font-bold text-slate-900 text-lg mt-3">รับทำระบบพร้อมใช้</h5>
-                  <p className="text-slate-500 text-xs font-light mb-3">มดและทีมสร้างระบบให้พร้อมใช้</p>
-                  <p className="text-2xl font-bold text-rose-600">ประเมินตาม Scope</p>
-                </div>
-
-              </div>
-            </div>
-
           </div>
         </div>
       </section>
