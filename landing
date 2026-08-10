@@ -29,18 +29,24 @@ import {
   Presentation,
   Sliders,
   Wrench,
-  Award
+  Globe,
+  Star,
+  Layers,
+  ChevronRight,
+  ShieldCheck,
+  Check
 } from 'lucide-react';
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [lang, setLang] = useState('TH');
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  // Link LINE ใหม่
+  // LINE Contact Link
   const lineLink = "https://line.me/R/ti/p/@237dhtqp?oat_content=url&ts=12080435";
 
-  // Smooth scroll function
+  // Smooth scroll
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -50,52 +56,65 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] text-[#2D2723] selection:bg-orange-500 selection:text-white" style={{ fontFamily: '"Kanit", sans-serif' }}>
+    <div className="min-h-screen bg-[#F5F3EF] text-[#1A1A1A] selection:bg-neutral-900 selection:text-white" style={{ fontFamily: '"Kanit", sans-serif' }}>
       
-      {/* Import Google Font Kanit */}
+      {/* Import Google Fonts */}
       <style>
         {`
-          @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
-          body { font-family: 'Kanit', sans-serif; background-color: #FAF7F2; }
+          @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Syne:wght@700;800&family=Playfair+Display:ital,wght@1,400;1,600&display=swap');
+          body { font-family: 'Kanit', sans-serif; background-color: #F5F3EF; }
+          .font-syne { font-family: 'Syne', sans-serif; }
+          .font-serif-italic { font-family: 'Playfair Display', serif; font-style: italic; }
+          .text-outline {
+            -webkit-text-stroke: 1.5px #1A1A1A;
+            color: transparent;
+          }
+          .text-outline-white {
+            -webkit-text-stroke: 1.5px rgba(255,255,255,0.8);
+            color: transparent;
+          }
         `}
       </style>
 
-      {/* Navigation */}
-      <nav className="fixed w-full z-50 bg-[#FAF7F2]/90 backdrop-blur-md border-b border-[#EFE8DE] shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
-            {/* Logo MGS Minimal */}
-            <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo(0, 0)}>
-              <div className="bg-gradient-to-br from-orange-600 to-amber-500 px-2.5 py-1 rounded-lg flex items-center justify-center shadow-md">
-                <span className="font-bold text-white text-sm tracking-widest">MGS</span>
-              </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-orange-600 via-amber-600 to-rose-600 bg-clip-text text-transparent">
-                ModGoScale
+      {/* Navigation Header */}
+      <nav className="fixed w-full z-50 bg-[#F5F3EF]/90 backdrop-blur-md border-b border-neutral-300/60 transition-all">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="flex justify-between h-20 items-center">
+            
+            {/* Brand Logo */}
+            <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              <span className="font-syne text-2xl font-extrabold tracking-tighter text-neutral-900">
+                MODGOSCALE<span className="text-neutral-400">.</span>
               </span>
             </div>
             
-            {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-8 items-center">
-              <button onClick={() => scrollToSection('about')} className="text-[#5C534C] hover:text-orange-600 transition font-medium">เกี่ยวกับเรา</button>
-              <button onClick={() => scrollToSection('speaker')} className="text-[#5C534C] hover:text-orange-600 transition font-medium">ผลงานวิทยากร</button>
-              <button onClick={() => scrollToSection('course')} className="text-[#5C534C] hover:text-orange-600 transition font-medium">คอร์สเรียน</button>
-              <button onClick={() => scrollToSection('consult')} className="text-[#5C534C] hover:text-orange-600 transition font-medium">ที่ปรึกษา</button>
-              <button onClick={() => scrollToSection('development')} className="text-[#5C534C] hover:text-orange-600 transition font-medium">รับทำเว็บไซต์</button>
-              <a 
-                href={lineLink}
-                target="_blank" 
-                rel="noreferrer"
-                className="bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-700 hover:to-amber-600 text-white px-5 py-2.5 rounded-full font-medium transition shadow-md shadow-orange-200 flex items-center gap-2"
+            {/* Desktop Navigation Links */}
+            <div className="hidden md:flex space-x-10 items-center text-xs font-semibold tracking-widest uppercase text-neutral-600">
+              <button onClick={() => scrollToSection('concept')} className="hover:text-black transition">Concept</button>
+              <button onClick={() => scrollToSection('speaker')} className="hover:text-black transition">Keynote Speaker</button>
+              <button onClick={() => scrollToSection('expertise')} className="hover:text-black transition">Expertise</button>
+              <button onClick={() => scrollToSection('portfolio')} className="hover:text-black transition">Portfolio</button>
+              <button onClick={() => scrollToSection('initiate')} className="hover:text-black transition">Initiate</button>
+              
+              {/* Language Switcher */}
+              <button 
+                onClick={() => setLang(lang === 'TH' ? 'EN' : 'TH')}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-neutral-400/60 hover:bg-neutral-900 hover:text-white transition text-xs font-medium"
               >
-                <MessageCircle size={18} />
-                LINE: AI VibeCoding
-              </a>
+                <Globe size={13} /> {lang}
+              </button>
             </div>
 
             {/* Mobile Menu Button */}
-            <div className="md:hidden flex items-center">
-              <button onClick={toggleMenu} className="text-[#5C534C] hover:text-orange-600">
-                {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            <div className="md:hidden flex items-center gap-3">
+              <button 
+                onClick={() => setLang(lang === 'TH' ? 'EN' : 'TH')}
+                className="flex items-center gap-1 px-2.5 py-1 rounded-full border border-neutral-400 text-xs font-medium"
+              >
+                <Globe size={12} /> {lang}
+              </button>
+              <button onClick={toggleMenu} className="text-neutral-900 p-1">
+                {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
               </button>
             </div>
           </div>
@@ -103,260 +122,211 @@ const App = () => {
 
         {/* Mobile Menu Dropdown */}
         {isMenuOpen && (
-          <div className="md:hidden bg-[#FAF7F2] border-b border-[#EFE8DE]">
-            <div className="px-4 pt-2 pb-6 space-y-2">
-              <button onClick={() => scrollToSection('about')} className="block w-full text-left px-3 py-3 text-[#5C534C] hover:bg-amber-100/50 hover:text-orange-700 rounded-md font-medium">เกี่ยวกับเรา</button>
-              <button onClick={() => scrollToSection('speaker')} className="block w-full text-left px-3 py-3 text-[#5C534C] hover:bg-amber-100/50 hover:text-orange-700 rounded-md font-medium">ผลงานวิทยากร</button>
-              <button onClick={() => scrollToSection('course')} className="block w-full text-left px-3 py-3 text-[#5C534C] hover:bg-amber-100/50 hover:text-orange-700 rounded-md font-medium">คอร์สเรียน</button>
-              <button onClick={() => scrollToSection('consult')} className="block w-full text-left px-3 py-3 text-[#5C534C] hover:bg-amber-100/50 hover:text-orange-700 rounded-md font-medium">ที่ปรึกษา</button>
-              <button onClick={() => scrollToSection('development')} className="block w-full text-left px-3 py-3 text-[#5C534C] hover:bg-amber-100/50 hover:text-orange-700 rounded-md font-medium">รับทำเว็บไซต์</button>
-              <a 
-                href={lineLink}
-                target="_blank" 
-                rel="noreferrer"
-                className="block w-full text-center mt-4 bg-gradient-to-r from-orange-600 to-amber-500 text-white px-3 py-3 rounded-md font-medium shadow-md"
-              >
-                ติดต่อ LINE: AI VibeCoding
-              </a>
-            </div>
+          <div className="md:hidden bg-[#F5F3EF] border-b border-neutral-300 px-6 py-6 space-y-4">
+            <button onClick={() => scrollToSection('concept')} className="block w-full text-left py-2 text-sm font-semibold tracking-wider uppercase text-neutral-700">Concept</button>
+            <button onClick={() => scrollToSection('speaker')} className="block w-full text-left py-2 text-sm font-semibold tracking-wider uppercase text-neutral-700">Keynote Speaker</button>
+            <button onClick={() => scrollToSection('expertise')} className="block w-full text-left py-2 text-sm font-semibold tracking-wider uppercase text-neutral-700">Expertise</button>
+            <button onClick={() => scrollToSection('portfolio')} className="block w-full text-left py-2 text-sm font-semibold tracking-wider uppercase text-neutral-700">Portfolio</button>
+            <button onClick={() => scrollToSection('initiate')} className="block w-full text-left py-2 text-sm font-semibold tracking-wider uppercase text-neutral-700">Initiate</button>
+            <a 
+              href={lineLink}
+              target="_blank" 
+              rel="noreferrer"
+              className="block w-full text-center mt-4 bg-neutral-900 text-white py-3 rounded-full font-medium text-sm tracking-wider uppercase"
+            >
+              Contact via LINE
+            </a>
           </div>
         )}
       </nav>
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 relative overflow-hidden bg-[#FAF7F2]">
-        {/* Background Blobs (Warm Amber/Cream Blobs) */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-amber-200/40 rounded-full blur-[110px] -z-10"></div>
-        <div className="absolute bottom-0 right-0 w-[600px] h-[400px] bg-orange-200/30 rounded-full blur-[100px] -z-10"></div>
-        
-        <div className="max-w-5xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-amber-200 shadow-sm mb-8">
-            <Rocket size={16} className="text-orange-600" />
-            <span className="text-sm text-[#5C534C] font-medium">Your Partner in Tech & Business Growth</span>
-          </div>
+      {/* Floating Chat Bubble Button */}
+      <a 
+        href={lineLink}
+        target="_blank"
+        rel="noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-neutral-900 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition duration-300"
+        title="Contact via LINE"
+      >
+        <MessageCircle size={26} />
+      </a>
+
+      {/* 1. HERO SECTION */}
+      <section className="pt-40 pb-24 px-6 sm:px-8 lg:px-12 relative overflow-hidden bg-[#F5F3EF]">
+        <div className="max-w-7xl mx-auto">
           
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight text-[#2D2723]">
-            ยกระดับธุรกิจคุณด้วย <br className="hidden md:block"/>
-            <span className="bg-gradient-to-r from-orange-600 via-amber-600 to-rose-600 bg-clip-text text-transparent drop-shadow-sm">
-              ระบบ AI ที่ขยายให้คุณโตได้ไวกว่าเดิม
+          {/* Subheader Tag */}
+          <div className="mb-8">
+            <span className="text-xs font-bold tracking-[0.25em] text-neutral-500 uppercase">
+              THE ARCHITECTURE OF INTELLIGENCE
             </span>
-          </h1>
-          
-          <p className="text-xl text-[#5C534C] mb-10 max-w-3xl mx-auto leading-relaxed font-light">
-            <strong>ModGoScale</strong> ช่วยคุณลดขั้นตอนการทำงาน สร้างระบบอัตโนมัติ และพัฒนา Digital Product 
-            ไม่ว่าคุณจะอยาก <span className="text-orange-600 font-medium">เรียนรู้เพื่อทำเอง</span>, 
-            <span className="text-amber-700 font-medium"> ปรึกษาเชิงกลยุทธ์</span> หรือ 
-            <span className="text-rose-600 font-medium"> ให้เราลงมือทำให้</span>
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto mt-8">
-             <button onClick={() => scrollToSection('course')} className="group p-6 bg-white border border-[#EFE8DE] hover:border-orange-400 rounded-2xl transition shadow-md hover:shadow-orange-100 text-left">
-                <div className="bg-amber-100/70 w-12 h-12 rounded-xl flex items-center justify-center text-orange-600 mb-4 group-hover:scale-110 transition">
-                  <BookOpen size={24} />
-                </div>
-                <h3 className="font-bold text-lg text-[#2D2723] mb-1">Education</h3>
-                <p className="text-sm text-[#5C534C]">สอนสร้าง Web & SaaS ด้วย AI แบบจับมือทำ</p>
-             </button>
-             
-             <button onClick={() => scrollToSection('consult')} className="group p-6 bg-white border border-[#EFE8DE] hover:border-amber-400 rounded-2xl transition shadow-md hover:shadow-amber-100 text-left">
-                <div className="bg-amber-100/70 w-12 h-12 rounded-xl flex items-center justify-center text-amber-700 mb-4 group-hover:scale-110 transition">
-                  <Users size={24} />
-                </div>
-                <h3 className="font-bold text-lg text-[#2D2723] mb-1">Consultation</h3>
-                <p className="text-sm text-[#5C534C]">ที่ปรึกษา AI & Business Automation</p>
-             </button>
-
-             <button onClick={() => scrollToSection('development')} className="group p-6 bg-white border border-[#EFE8DE] hover:border-rose-400 rounded-2xl transition shadow-md hover:shadow-rose-100 text-left">
-                <div className="bg-rose-100/70 w-12 h-12 rounded-xl flex items-center justify-center text-rose-600 mb-4 group-hover:scale-110 transition">
-                  <Monitor size={24} />
-                </div>
-                <h3 className="font-bold text-lg text-[#2D2723] mb-1">Development</h3>
-                <p className="text-sm text-[#5C534C]">บริการรับทำเว็บไซต์และระบบพร้อมใช้</p>
-             </button>
           </div>
+
+          {/* Main Title Typography */}
+          <h1 className="font-syne text-5xl sm:text-7xl lg:text-8xl font-extrabold uppercase tracking-tight leading-[0.95] mb-10 text-neutral-900">
+            SCALE YOUR <br/>
+            <span className="font-serif-italic text-outline font-normal uppercase tracking-normal">BUSINESS</span> WITH AI
+          </h1>
+
+          {/* Subtext and Discover More Action */}
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 pt-4">
+            <p className="text-base sm:text-lg text-neutral-600 max-w-xl leading-relaxed font-light">
+              ModGoScale ช่วยคุณลดขั้นตอนการทำงาน สร้างระบบอัตโนมัติ และพัฒนา Digital Product ไม่ว่าคุณจะอยากเรียนรู้เพื่อทำเอง ปรึกษาเชิงกลยุทธ์ หรือให้เราลงมือทำให้
+            </p>
+            
+            <button 
+              onClick={() => scrollToSection('concept')}
+              className="group inline-flex items-center gap-3 text-xs font-bold tracking-widest uppercase border-b-2 border-neutral-900 pb-1 hover:pr-3 transition-all"
+            >
+              DISCOVER MORE <ArrowRight size={16} className="group-hover:translate-x-1.5 transition" />
+            </button>
+          </div>
+
         </div>
       </section>
 
-      {/* About Us Section */}
-      <section id="about" className="py-20 bg-[#F5F0E8] scroll-mt-20 border-t border-b border-[#EFE8DE]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row gap-16 items-center">
+      {/* 2. CONCEPT / ABOUT US SECTION */}
+      <section id="concept" className="py-24 px-6 sm:px-8 lg:px-12 scroll-mt-20 border-t border-neutral-300/60">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
-            {/* Left Content: Text */}
-            <div className="md:w-1/2">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-100/80 text-amber-900 border border-amber-200 text-sm font-medium mb-4">
-                <User size={16} /> WHO WE ARE
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#2D2723] leading-snug">
-                จากประสบการณ์ Solopreneur <br/> สู่ <span className="bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">ผู้ช่วยของคุณ</span>
-              </h2>
-              <p className="text-[#5C534C] mb-6 text-lg font-light leading-relaxed">
-                สวัสดีค่ะ! <strong>ModGoScale</strong> คือแบรนด์ของช่อง <strong>Modty.ai</strong> เราคือ Solopreneur ที่เข้าใจหัวอกคนทำธุรกิจคนเดียวและอยากเห็นทุกคนสร้างธุรกิจได้ด้วยตัวเอง
-              </p>
-              <p className="text-[#5C534C] mb-6 font-light leading-relaxed">
-                เป้าหมายของเราคือช่วยให้คุณ <strong>สร้างระบบและเว็บไซต์ด้วย AI Vibe Coding</strong> แบบไม่ต้องเขียนโค้ดเอง (No-Code) เน้นสอนให้เข้าใจ <strong>คอนเซปต์ (Concept)</strong> และ <strong>โครงสร้าง (Structure)</strong> เพื่อให้คุณนำไปต่อยอดได้จริงกับทุกธุรกิจ
-              </p>
-              <p className="text-[#5C534C] mb-8 font-light leading-relaxed">
-                เราเน้นการเลือกใช้เครื่องมือที่ <strong>"ง่าย ประหยัด และคุ้มค่า"</strong> พร้อมให้คำปรึกษาเรื่อง AI รอบด้าน ไม่ว่าจะเป็นงานสร้างภาพ กราฟิก วิดีโอ หรือถ้าคุณไม่มีเวลา เราก็มีบริการรับทำให้นะคะ
-              </p>
-              
-              <div className="flex flex-wrap gap-4">
-                 <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg border border-amber-200 shadow-sm text-sm text-[#5C534C]">
-                    <Palette size={16} className="text-orange-600"/> AI Image & Graphics
-                 </div>
-                 <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg border border-amber-200 shadow-sm text-sm text-[#5C534C]">
-                    <Video size={16} className="text-amber-600"/> AI Video Generation
-                 </div>
-                 <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg border border-rose-200 shadow-sm text-sm text-[#5C534C]">
-                    <Code size={16} className="text-rose-600"/> Custom AI Web Dev
-                 </div>
-              </div>
-            </div>
-            
-            {/* Right Content: Profile Image & Features */}
-            <div className="md:w-1/2 w-full flex flex-col items-center">
-              {/* Profile Image Wrapper */}
-              <div className="relative mb-8 group cursor-pointer">
-                {/* Glowing Background */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-amber-400 rounded-full blur opacity-40 group-hover:opacity-60 transition duration-500"></div>
-                
-                {/* Image */}
+            {/* Left Column: Portrait Photo */}
+            <div className="lg:col-span-6">
+              <div className="relative rounded-3xl overflow-hidden shadow-xl border border-neutral-300/80 bg-neutral-200">
                 <img 
                   src="/image.png" 
-                  alt="Modty Profile" 
-                  className="relative w-56 h-56 rounded-full object-cover border-4 border-white shadow-xl z-10"
+                  alt="Modty Founder of ModGoScale" 
+                  className="w-full h-[520px] object-cover object-top hover:scale-105 transition duration-700"
                 />
-                
-                {/* Floating Badge */}
-                <div className="absolute bottom-2 right-2 z-20 bg-white border border-amber-200 text-orange-600 px-4 py-1.5 rounded-full text-xs font-bold shadow-lg flex items-center gap-1">
-                  <CheckCircle size={14} /> Modty.ai Founder
-                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Text Content */}
+            <div className="lg:col-span-6 space-y-8">
+              <h2 className="font-syne text-4xl sm:text-5xl font-extrabold text-neutral-900 tracking-tight leading-tight">
+                Solopreneur to <br/>
+                <span className="text-neutral-400 font-normal">Professional Partner.</span>
+              </h2>
+
+              <div className="w-16 h-[2px] bg-neutral-900"></div>
+
+              <div className="space-y-4 text-neutral-700 text-base leading-relaxed font-light">
+                <p>
+                  สวัสดีค่ะ! <strong>ModGoScale</strong> คือจุดเริ่มต้นจากช่อง <strong>Modty.ai</strong> เราเข้าใจคนทำธุรกิจยุคใหม่ที่ต้องการความคล่องตัวและทรงพลัง
+                </p>
+                <p>
+                  เป้าหมายของเราคือการช่วยให้คุณสร้างระบบและเว็บไซต์ด้วย <strong>AI Vibe Coding (No-Code หรือ Low-Code)</strong> โดยเลือกใช้เครื่องมือที่ง่าย ประหยัด และมีภาพลักษณ์ระดับองค์กร
+                </p>
               </div>
 
-              {/* Features Box */}
-              <div className="relative w-full">
-                <div className="absolute inset-0 bg-gradient-to-r from-amber-200 to-orange-200 blur-2xl opacity-30 rounded-3xl -z-10"></div>
-                <div className="bg-white border border-[#EFE8DE] rounded-3xl p-8 shadow-xl">
-                    <h3 className="text-xl font-bold text-[#2D2723] mb-6 text-center">เพื่อนคู่คิดสำหรับธุรกิจของคุณ</h3>
-                    <div className="space-y-6">
-                        <div className="flex gap-4">
-                            <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-orange-600 shrink-0">
-                                <Users size={20}/>
-                            </div>
-                            <div>
-                                <h4 className="font-semibold text-[#2D2723]">Solopreneur Mindset</h4>
-                                <p className="text-sm text-[#5C534C] mt-1">เข้าใจคนทำงานคนเดียว เข้าถึงง่าย คุยง่าย ไม่ยุ่งยากค่ะ</p>
-                            </div>
-                        </div>
-                        <div className="flex gap-4">
-                            <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-amber-700 shrink-0">
-                                <Zap size={20}/>
-                            </div>
-                            <div>
-                                <h4 className="font-semibold text-[#2D2723]">AI Mastery</h4>
-                                <p className="text-sm text-[#5C534C] mt-1">เชี่ยวชาญเครื่องมือ AI หลากหลาย พร้อมแนะนำสิ่งที่เหมาะกับคุณที่สุด</p>
-                            </div>
-                        </div>
-                        <div className="flex gap-4">
-                            <div className="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center text-rose-600 shrink-0">
-                                <Layout size={20}/>
-                            </div>
-                            <div>
-                                <h4 className="font-semibold text-[#2D2723]">Flexible Service</h4>
-                                <p className="text-sm text-[#5C534C] mt-1">รับทำเว็บไซต์ที่ยืดหยุ่น ปรับแต่งได้ตามใจลูกค้า ใส่ใจเหมือนทำใช้เอง</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              {/* Category Pill Badges */}
+              <div className="flex flex-wrap gap-3 pt-4">
+                <span className="px-4 py-2 rounded-lg bg-neutral-200/80 border border-neutral-300 text-[11px] font-bold tracking-widest uppercase text-neutral-800">
+                  AI IMAGE & GRAPHICS
+                </span>
+                <span className="px-4 py-2 rounded-lg bg-neutral-200/80 border border-neutral-300 text-[11px] font-bold tracking-widest uppercase text-neutral-800">
+                  AI VIDEO GENERATION
+                </span>
+                <span className="px-4 py-2 rounded-lg bg-neutral-200/80 border border-neutral-300 text-[11px] font-bold tracking-widest uppercase text-neutral-800">
+                  CUSTOM AI WEB DEV
+                </span>
               </div>
+
             </div>
 
           </div>
         </div>
       </section>
 
-      {/* Speaker Section: Keynote Speaker & Corporate Trainer */}
-      <section id="speaker" className="py-24 bg-[#FAF7F2] scroll-mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 3. KEYNOTE SPEAKER SECTION (Girl in ICT by DCT) */}
+      <section id="speaker" className="py-24 px-6 sm:px-8 lg:px-12 scroll-mt-20 bg-neutral-900 text-white">
+        <div className="max-w-7xl mx-auto">
           
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100/80 text-amber-900 border border-amber-200 text-sm font-semibold mb-6">
-            <Presentation size={16} /> KEYNOTE SPEAKER & CORPORATE TRAINER
+          <div className="mb-6">
+            <span className="text-xs font-bold tracking-[0.25em] text-neutral-400 uppercase">
+              KEYNOTE SPEAKER & CORPORATE TRAINER
+            </span>
           </div>
-          
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-[#2D2723]">
-            วิทยากรบรรยายเทคโนโลยี <span className="bg-gradient-to-r from-orange-600 via-amber-600 to-rose-600 bg-clip-text text-transparent">และ AI ระดับประเทศ</span>
+
+          <h2 className="font-syne text-3xl sm:text-5xl font-extrabold uppercase tracking-tight mb-4">
+            NATIONAL EVENT & WORKSHOP
           </h2>
-          <p className="text-[#5C534C] text-lg font-light mb-12 max-w-3xl">
-            มดได้รับเกียรติเป็นวิทยากรบรรยายและจัด In-House Workshop ด้าน AI, Vibe Coding และ Digital Transformation ให้กับสถาบันและองค์กรชั้นนำ
+          <p className="text-neutral-400 text-base sm:text-lg max-w-2xl font-light mb-12">
+            มดได้รับเกียรติเป็นวิทยากรบรรยายและจัด In-House Workshop ด้าน AI, Vibe Coding และ Digital Transformation ให้กับสถาบันและองค์กรระดับประเทศ
           </p>
 
-          {/* Event Card: Girl in ICT by DCT */}
-          <div className="bg-white border border-[#EFE8DE] rounded-3xl p-8 md:p-10 mb-12 shadow-sm hover:shadow-md transition">
-            <div className="flex flex-col lg:flex-row gap-8 items-center">
-              <div className="lg:w-7/12 space-y-4">
+          {/* Main Speaker Highlight Card */}
+          <div className="bg-neutral-800/80 border border-neutral-700/80 rounded-3xl p-8 lg:p-12 mb-10 shadow-2xl">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              
+              <div className="lg:col-span-7 space-y-6">
                 <div className="flex flex-wrap gap-2">
-                  <span className="bg-amber-100 text-amber-900 border border-amber-200 text-xs font-bold px-3 py-1 rounded-full">
+                  <span className="bg-neutral-700 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                     NATIONAL EVENT
                   </span>
-                  <span className="bg-orange-100 text-orange-800 border border-orange-200 text-xs font-bold px-3 py-1 rounded-full">
+                  <span className="bg-white text-neutral-900 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                     Girl in ICT by DCT
                   </span>
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-[#2D2723]">
+
+                <h3 className="text-2xl sm:text-3xl font-bold">
                   สภาดิจิทัลเพื่อเศรษฐกิจและสังคมแห่งประเทศไทย (DCT)
                 </h3>
-                <p className="text-[#5C534C] font-light text-base leading-relaxed">
+
+                <p className="text-neutral-300 font-light leading-relaxed">
                   วิทยากรบรรยายในโครงการ <strong>Girl in ICT</strong> จัดโดย <strong>สภาดิจิทัลเพื่อเศรษฐกิจและสังคมแห่งประเทศไทย</strong> ส่งเสริมศักยภาพของผู้หญิงและคนรุ่นใหม่ในการประยุกต์ใช้ AI สร้างนวัตกรรมดิจิทัล
                 </p>
-                <div className="bg-[#FAF7F2] p-5 rounded-2xl border border-[#EFE8DE] space-y-2 text-sm text-[#2D2723]">
-                  <div className="flex items-start gap-2">
-                    <CheckCircle size={18} className="text-orange-600 shrink-0 mt-0.5" />
+
+                <div className="bg-neutral-900/90 p-5 rounded-2xl border border-neutral-700/60 space-y-3 text-sm text-neutral-300 font-light">
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle size={16} className="text-white shrink-0 mt-0.5" />
                     <span><strong>หัวข้อการบรรยาย:</strong> "Girl in ICT: ไม่เคยเขียนโค้ด ก็สร้างเว็บและแชตบอทได้ — สร้างระบบได้ด้วย AI จากไอเดีย สู่เว็บและแชตบอทที่ใช้งานจริง"</span>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <CheckCircle size={18} className="text-orange-600 shrink-0 mt-0.5" />
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle size={16} className="text-white shrink-0 mt-0.5" />
                     <span><strong>แนวคิด Vibe Coding:</strong> ทุกไอเดียเป็นจริงได้ด้วย AI โดยไม่ต้องมีพื้นฐานการเขียนโค้ดมาก่อน</span>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <CheckCircle size={18} className="text-orange-600 shrink-0 mt-0.5" />
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle size={16} className="text-white shrink-0 mt-0.5" />
                     <span><strong>เส้นทางเติบโต:</strong> จากการทำธุรกิจ สู่การเป็น AI Consultant ที่สร้างระบบอัตโนมัติให้ธุรกิจ</span>
                   </div>
                 </div>
               </div>
 
-              <div className="lg:w-5/12 w-full">
+              <div className="lg:col-span-5">
                 <img 
                   src="/images/dct_speaking_vibe.jpg" 
                   alt="Modty Speaker Girl in ICT" 
-                  className="rounded-2xl w-full h-[300px] object-cover shadow-md border border-[#EFE8DE]"
+                  className="rounded-2xl w-full h-[320px] object-cover border border-neutral-700 shadow-xl"
                 />
               </div>
+
             </div>
           </div>
 
-          {/* Event Photo Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-white border border-[#EFE8DE] rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
-              <img src="/images/dct_speaking_consultant.jpg" alt="จาก Business สู่ AI Consultant" className="w-full h-52 object-cover" />
-              <div className="p-5">
-                <h4 className="font-bold text-[#2D2723] mb-1">จาก Business สู่ AI Consultant</h4>
-                <p className="text-[#5C534C] text-xs font-light">บรรยายถ่ายทอดการประยุกต์ใช้ AI แก้โจทย์ธุรกิจจริง</p>
+          {/* Speaker Event Photo Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="bg-neutral-800/60 border border-neutral-700/60 rounded-2xl overflow-hidden">
+              <img src="/images/dct_speaking_consultant.jpg" alt="จาก Business สู่ AI Consultant" className="w-full h-48 object-cover" />
+              <div className="p-4">
+                <h4 className="font-bold text-sm text-white mb-1">จาก Business สู่ AI Consultant</h4>
+                <p className="text-neutral-400 text-xs font-light">บรรยายถ่ายทอดการประยุกต์ใช้ AI แก้โจทย์ธุรกิจจริง</p>
               </div>
             </div>
 
-            <div className="bg-white border border-[#EFE8DE] rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
-              <img src="/images/dct_group.jpg" alt="ถ่ายภาพร่วมกับคณะผู้บริหาร DCT" className="w-full h-52 object-cover" />
-              <div className="p-5">
-                <h4 className="font-bold text-[#2D2723] mb-1">ถ่ายภาพร่วมกับผู้บริหาร DCT</h4>
-                <p className="text-[#5C534C] text-xs font-light">ภาพบรรยากาศร่วมกับวิทยากรและผู้บริหารสภาดิจิทัลฯ</p>
+            <div className="bg-neutral-800/60 border border-neutral-700/60 rounded-2xl overflow-hidden">
+              <img src="/images/dct_group.jpg" alt="ถ่ายภาพร่วมกับคณะผู้บริหาร DCT" className="w-full h-48 object-cover" />
+              <div className="p-4">
+                <h4 className="font-bold text-sm text-white mb-1">ถ่ายภาพร่วมกับผู้บริหาร DCT</h4>
+                <p className="text-neutral-400 text-xs font-light">ภาพบรรยากาศร่วมกับวิทยากรและผู้บริหารสภาดิจิทัลฯ</p>
               </div>
             </div>
 
-            <div className="bg-white border border-[#EFE8DE] rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition sm:col-span-2 lg:col-span-1">
-              <img src="/images/dct_gift.jpg" alt="รับมอบของที่ระลึกจากสภาดิจิทัลฯ" className="w-full h-52 object-cover" />
-              <div className="p-5">
-                <h4 className="font-bold text-[#2D2723] mb-1">รับมอบของที่ระลึกจาก DCT</h4>
-                <p className="text-[#5C534C] text-xs font-light">รับมอบของที่ระลึกจากคณะกรรมการสภาดิจิทัลฯ</p>
+            <div className="bg-neutral-800/60 border border-neutral-700/60 rounded-2xl overflow-hidden">
+              <img src="/images/dct_gift.jpg" alt="รับมอบของที่ระลึกจากสภาดิจิทัลฯ" className="w-full h-48 object-cover" />
+              <div className="p-4">
+                <h4 className="font-bold text-sm text-white mb-1">รับมอบของที่ระลึกจาก DCT</h4>
+                <p className="text-neutral-400 text-xs font-light">รับมอบของที่ระลึกจากคณะกรรมการสภาดิจิทัลฯ</p>
               </div>
             </div>
           </div>
@@ -364,749 +334,577 @@ const App = () => {
         </div>
       </section>
 
-      {/* 1. Education Section */}
-      <section id="course" className="py-24 bg-white scroll-mt-16 border-t border-[#EFE8DE]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100/80 text-amber-900 border border-amber-200 text-sm font-semibold mb-6">
-              SERVICE 1: EDUCATION
-          </div>
-
-          {/* Customize Notice Alert Box */}
-          <div className="mb-12 bg-[#FAF5ED] border border-amber-300 p-5 rounded-2xl flex items-center gap-4 shadow-sm">
-            <div className="bg-orange-600 text-white p-3 rounded-xl shrink-0">
-              <Sliders size={22} />
-            </div>
-            <div>
-              <p className="font-bold text-[#2D2723] text-base">
-                ✨ ปรับ Customize ตามผู้เรียนและเป้าหมายต้องการได้ทุกคอร์ส!
-              </p>
-              <p className="text-[#5C534C] text-sm font-light">
-                ทุกคอร์สและ Workshop สามารถปรับแต่งเนื้อหา โจทย์โปรเจกต์ และระยะเวลาให้เข้ากับความต้องการเฉพาะของผู้เรียนหรือองค์กรได้ (Private & In-House Training)
-              </p>
-            </div>
-          </div>
-          
-          {/* Main Course Highlight */}
-          <div className="flex flex-col lg:flex-row gap-16 items-center mb-24">
-            <div className="lg:w-1/2">
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#2D2723]">เปลี่ยนไอเดียให้เป็น Web จริง<br/>ด้วย <span className="bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">Vibe Coding Master Route</span></h2>
-              <p className="text-[#5C534C] mb-6 text-lg font-light">
-                คอร์สเรียนที่จะสอนคุณสร้างเว็บไซต์และแอปพลิเคชันด้วย AI และ Google Ecosystem เต็มรูปแบบ โดยไม่ต้องเริ่มจากศูนย์
-              </p>
-              
-              <div className="bg-[#FAF7F2] p-6 rounded-2xl border border-[#EFE8DE] mb-8 shadow-sm">
-                <h3 className="font-bold text-xl mb-3 flex items-center gap-2 text-[#2D2723]">
-                  <Zap className="text-amber-500" size={20}/> ทำไมต้องคอร์สนี้?
-                </h3>
-                <ul className="space-y-3">
-                  <li className="flex gap-3 text-[#5C534C]">
-                    <CheckCircle size={20} className="text-orange-600 shrink-0 mt-0.5" />
-                    <span className="font-light"><strong>ไม่ใช่แค่สร้างเว็บหน้าเดียว:</strong> สอนสร้าง Web App มีระบบสมาชิก (Login) และฐานข้อมูล (Database)</span>
-                  </li>
-                  <li className="flex gap-3 text-[#5C534C]">
-                    <CheckCircle size={20} className="text-orange-600 shrink-0 mt-0.5" />
-                    <span className="font-light"><strong>คิดแบบ SaaS:</strong> สอนระบบคิดการสร้าง "บริการ" เพื่อแก้ปัญหาผู้ใช้และสร้างรายได้ระยะยาว</span>
-                  </li>
-                  <li className="flex gap-3 text-[#5C534C]">
-                    <CheckCircle size={20} className="text-orange-600 shrink-0 mt-0.5" />
-                    <span className="font-light"><strong>ใช้ AI ทำงานเบื้องหลัง:</strong> ลดเวลา Coding เองด้วยการใช้ AI ช่วยเขียนโครงสร้าง</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Pricing Cards Column */}
-            <div className="lg:w-1/2 w-full flex flex-col gap-6">
-              
-              {/* Active Pricing Card - Vibe Coding */}
-              <div className="bg-white border border-orange-300 rounded-3xl p-8 relative shadow-xl shadow-orange-100/50">
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-orange-600 to-amber-500 text-white px-6 py-2 rounded-full font-bold text-sm shadow-md">
-                  HOT SELLING
-                </div>
-                
-                <div className="text-center mb-8 mt-4">
-                  <h3 className="text-2xl font-bold text-[#2D2723] mb-2">แพ็กเกจเรียนส่วนตัวออนไลน์</h3>
-                  <div className="flex justify-center items-end gap-2 mb-2">
-                    <span className="text-5xl font-extrabold text-[#2D2723]">5,900</span>
-                    <span className="text-xl font-bold text-orange-600 mb-2">THB</span>
-                  </div>
-                  <p className="text-slate-400 text-sm line-through font-light">ราคาปกติ 9,900 บาท</p>
-                  <p className="text-rose-600 text-sm font-medium mt-1">** สำหรับ 10 ท่านแรกเท่านั้น</p>
-                </div>
-
-                <div className="space-y-4 mb-8">
-                  <div className="flex items-start gap-3 p-3 bg-amber-50 rounded-lg border border-amber-200">
-                    <BookOpen size={20} className="text-orange-600 shrink-0 mt-0.5" />
-                    <div className="text-sm text-[#5C534C] font-light">
-                      <strong className="font-semibold text-[#2D2723]">เรียนครบทุกบท Vibe Coding:</strong> Workshop สร้าง AI Web App สำหรับ MVP
-                    </div>
-                  </div>
-                   <div className="flex items-start gap-3 p-3 bg-amber-50 rounded-lg border border-amber-200">
-                    <Code size={20} className="text-orange-600 shrink-0 mt-0.5" />
-                    <div className="text-sm text-[#5C534C] font-light">
-                      <strong className="font-semibold text-[#2D2723]">Full Stack Skills:</strong> สอน AI Coding, API, หลังบ้าน และคลาวด์พื้นฐาน
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3 p-3 bg-amber-50 rounded-lg border border-amber-200">
-                    <Users size={20} className="text-orange-600 shrink-0 mt-0.5" />
-                    <div className="text-sm text-[#5C534C] font-light">
-                      <strong className="font-semibold text-[#2D2723]">ดูแลใกล้ชิด:</strong> เข้ากลุ่ม Vibe Coding with Modty ดูแล 60 วัน
-                    </div>
-                  </div>
-                   <div className="flex items-start gap-3 p-3 bg-amber-50 rounded-lg border border-amber-200">
-                    <Database size={20} className="text-orange-600 shrink-0 mt-0.5" />
-                    <div className="text-sm text-[#5C534C] font-light">
-                      <strong className="font-semibold text-[#2D2723]">Assets พร้อมใช้:</strong> ได้ prompt และโครงสร้างที่เอาไปใช้ต่อได้จริง
-                    </div>
-                  </div>
-                </div>
-
-                <a 
-                  href={lineLink} 
-                  target="_blank" 
-                  rel="noreferrer"
-                  className="block w-full text-center bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-700 hover:to-amber-600 text-white font-bold py-4 rounded-xl transition duration-300 shadow-md"
-                >
-                  สมัครเรียนทันที
-                </a>
-              </div>
-
-              {/* Coming Soon Card */}
-              <div className="bg-[#FAF7F2] border border-[#EFE8DE] rounded-2xl p-6 relative overflow-hidden group">
-                <div className="absolute top-0 right-0 bg-[#EFE8DE] text-[#5C534C] text-xs font-bold px-3 py-1 rounded-bl-xl">
-                  COMING SOON
-                </div>
-                <div className="flex flex-col sm:flex-row items-center gap-4">
-                   <div className="bg-white p-4 rounded-xl text-amber-500 border border-amber-200 shadow-sm shrink-0">
-                      <Video size={28} />
-                   </div>
-                   <div className="text-center sm:text-left flex-grow">
-                      <h4 className="font-bold text-[#2D2723] text-lg">เรียนด้วยตัวเองผ่านวิดีโอ (Self-Paced)</h4>
-                      <p className="text-[#5C534C] text-sm mb-1">Vibe Coding Master Route</p>
-                      <div className="flex items-center justify-center sm:justify-start gap-2">
-                        <span className="text-2xl font-bold text-slate-400">3,990 THB</span>
-                        <span className="text-xs bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full font-medium border border-amber-200 flex items-center gap-1">
-                            <Clock size={10} /> เร็วๆ นี้
-                        </span>
-                      </div>
-                   </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          {/* Short Courses Section */}
-          <div className="border-t border-[#EFE8DE] pt-16">
-            <h3 className="text-2xl md:text-3xl font-bold text-center mb-12 text-[#2D2723]">คอร์สระยะสั้น & Workshop <span className="bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">เฉพาะทาง</span></h3>
+      {/* 4. DARK STATS BANNER */}
+      <section className="py-20 bg-[#111111] text-white">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-neutral-800">
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-              
-              {/* Course 1: AI System Architect */}
-              <div className="bg-white border border-[#EFE8DE] rounded-2xl p-8 hover:border-orange-300 transition duration-300 flex flex-col relative group shadow-sm hover:shadow-md">
-                <div className="absolute top-0 right-0 p-4 opacity-40 group-hover:opacity-100 transition">
-                   <Bot size={40} className="text-amber-300" />
-                </div>
-                
-                <div className="mb-6">
-                  <div className="inline-block bg-amber-100 text-amber-900 text-xs font-bold px-2 py-1 rounded mb-3">AI PRODUCTIVITY</div>
-                  <h4 className="text-2xl font-bold text-[#2D2723] mb-2">AI System Architect</h4>
-                  <p className="text-[#5C534C] font-light">สร้างผู้ช่วยส่วนตัว ลดงานซ้ำซาก</p>
-                </div>
-
-                <div className="space-y-4 mb-8 flex-grow">
-                   <div className="bg-[#FAF7F2] p-4 rounded-xl border border-[#EFE8DE]">
-                      <p className="text-sm text-[#5C534C] font-light mb-2"><span className="text-orange-600 font-semibold">เหมาะสำหรับ:</span> คนที่ต้องสั่งงาน AI บ่อยๆ, สายกราฟิก หรือ Admin ที่อยากมีระบบทำงานอัตโนมัติ</p>
-                   </div>
-                   <ul className="space-y-2 text-sm text-[#5C534C] font-light">
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-orange-600 shrink-0"/>
-                        <span><strong>Prompt Engineering:</strong> สั่งงาน AI ให้แม่นยำ</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-orange-600 shrink-0"/>
-                        <span><strong>Custom Gems:</strong> สอนสร้าง AI ผู้ช่วยส่วนตัว</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <Sparkles size={16} className="text-amber-500 shrink-0"/>
-                        <span><strong>Bonus:</strong> แถมสูตร Gen ภาพ 5 สไตล์</span>
-                      </li>
-                   </ul>
-                </div>
-
-                <div className="border-t border-[#EFE8DE] pt-6">
-                   <div className="flex justify-between items-end mb-4">
-                      <div>
-                        <p className="text-xs text-slate-400 line-through">ราคาปกติ 4,900 บาท</p>
-                        <p className="text-2xl font-bold text-[#2D2723]">1,290 THB</p>
-                      </div>
-                      <span className="text-xs text-[#5C534C] bg-[#FAF7F2] px-2 py-1 rounded border border-[#EFE8DE]">Private 1 ชม.</span>
-                   </div>
-                   <a href={lineLink} target="_blank" rel="noreferrer" className="block w-full text-center bg-white border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white font-medium py-3 rounded-lg transition">
-                      จองเวลาเรียน
-                   </a>
-                </div>
-              </div>
-
-              {/* Course 2: ChatGPT Work + Codex */}
-              <div className="bg-white border-2 border-orange-400 rounded-2xl p-8 hover:border-orange-500 transition duration-300 flex flex-col relative group shadow-md hover:shadow-xl">
-                <div className="absolute top-0 right-0 p-4 opacity-40 group-hover:opacity-100 transition">
-                   <Bot size={40} className="text-orange-400" />
-                </div>
-                
-                <div className="mb-6">
-                  <div className="inline-block bg-gradient-to-r from-orange-600 to-amber-500 text-white text-xs font-bold px-2 py-1 rounded mb-3">BEST MATCH FOR MODTY BRAND</div>
-                  <h4 className="text-2xl font-bold text-[#2D2723] mb-2">ChatGPT Work + Codex</h4>
-                  <p className="text-[#5C534C] font-light">สร้าง AI Operating System ส่วนตัว</p>
-                </div>
-
-                <div className="space-y-4 mb-8 flex-grow">
-                   <div className="bg-amber-50 p-4 rounded-xl border border-amber-200">
-                      <p className="text-sm text-amber-900 font-light mb-2"><span className="text-orange-600 font-semibold">จุดเด่น:</span> เปลี่ยน ChatGPT จากเครื่องมือถามตอบ ให้เป็นผู้ช่วยทำงานและสร้างระบบส่วนตัว</p>
-                   </div>
-                   <ul className="space-y-2 text-sm text-[#5C534C] font-light">
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-orange-600 shrink-0"/>
-                        <span><strong>Projects & Apps:</strong> เชื่อม Gmail, Drive, Notion, GitHub</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-orange-600 shrink-0"/>
-                        <span><strong>Codex Tools:</strong> สร้างเว็บไซต์ เครื่องมือ และ Agent ทีม AI</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-orange-600 shrink-0"/>
-                        <span><strong>Sample Projects:</strong> AI Calendar, Morning Brief, Founder OS</span>
-                      </li>
-                   </ul>
-                </div>
-
-                <div className="border-t border-[#EFE8DE] pt-6">
-                   <div className="flex justify-between items-end mb-4">
-                      <div>
-                        <p className="text-xs text-slate-400 line-through">ราคาปกติ 6,900 บาท</p>
-                        <p className="text-2xl font-bold text-[#2D2723]">2,900 THB</p>
-                      </div>
-                      <span className="text-xs text-[#5C534C] bg-[#FAF7F2] px-2 py-1 rounded border border-[#EFE8DE]">Private / Online</span>
-                   </div>
-                   <a href={lineLink} target="_blank" rel="noreferrer" className="block w-full text-center bg-orange-600 text-white hover:bg-orange-700 font-medium py-3 rounded-lg transition shadow-sm">
-                      สอบถามรายละเอียด
-                   </a>
-                </div>
-              </div>
-
-              {/* Course 3: AI Visual Content System */}
-              <div className="bg-white border border-[#EFE8DE] rounded-2xl p-8 hover:border-amber-300 transition duration-300 flex flex-col relative group shadow-sm hover:shadow-md">
-                <div className="absolute top-0 right-0 p-4 opacity-40 group-hover:opacity-100 transition">
-                   <Palette size={40} className="text-amber-300" />
-                </div>
-                
-                <div className="mb-6">
-                  <div className="inline-block bg-amber-100 text-amber-900 text-xs font-bold px-2 py-1 rounded mb-3">VISUAL CONTENT</div>
-                  <h4 className="text-2xl font-bold text-[#2D2723] mb-2">AI Visual Content System</h4>
-                  <p className="text-[#5C534C] font-light">สร้างภาพ คารูเซล และโฆษณาเป็นระบบ</p>
-                </div>
-
-                <div className="space-y-4 mb-8 flex-grow">
-                   <div className="bg-[#FAF7F2] p-4 rounded-xl border border-[#EFE8DE]">
-                      <p className="text-sm text-[#5C534C] font-light mb-2"><span className="text-amber-700 font-semibold">เหมาะสำหรับ:</span> Creator, Marketer, เจ้าของแบรนด์, Agency, ร้านค้าออนไลน์</p>
-                   </div>
-                   <ul className="space-y-2 text-sm text-[#5C534C] font-light">
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-amber-600 shrink-0"/>
-                        <span><strong>Design System:</strong> ล็อกใบหน้า สินค้า สี ฟอนต์ และสไตล์</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-amber-600 shrink-0"/>
-                        <span><strong>Carousel Theme:</strong> สร้าง Carousel ให้ทุกหน้าเป็นธีมเดียวกัน</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-amber-600 shrink-0"/>
-                        <span><strong>AI Tool Build:</strong> สร้าง AI Carousel Tool จัดรูปข้อความ auto</span>
-                      </li>
-                   </ul>
-                </div>
-
-                <div className="border-t border-[#EFE8DE] pt-6">
-                   <div className="flex justify-between items-end mb-4">
-                      <div>
-                        <p className="text-xs text-slate-400 line-through">ราคาปกติ 5,900 บาท</p>
-                        <p className="text-2xl font-bold text-[#2D2723]">2,500 THB</p>
-                      </div>
-                      <span className="text-xs text-[#5C534C] bg-[#FAF7F2] px-2 py-1 rounded border border-[#EFE8DE]">Workshop</span>
-                   </div>
-                   <a href={lineLink} target="_blank" rel="noreferrer" className="block w-full text-center bg-white border border-amber-600 text-amber-700 hover:bg-amber-600 hover:text-white font-medium py-3 rounded-lg transition">
-                      จองคิวเรียน
-                   </a>
-                </div>
-              </div>
-
-              {/* Course 4: AI Video & Content Workshop */}
-              <div className="bg-white border border-[#EFE8DE] rounded-2xl p-8 hover:border-amber-300 transition duration-300 flex flex-col relative group shadow-sm hover:shadow-md">
-                <div className="absolute top-0 right-0 p-4 opacity-40 group-hover:opacity-100 transition">
-                   <Clapperboard size={40} className="text-amber-300" />
-                </div>
-                
-                <div className="mb-6">
-                  <div className="inline-block bg-amber-100 text-amber-900 text-xs font-bold px-2 py-1 rounded mb-3">CONTENT CREATOR</div>
-                  <h4 className="text-2xl font-bold text-[#2D2723] mb-2">AI Video & Motion Workshop</h4>
-                  <p className="text-[#5C534C] font-light">สร้างวิดีโอ AI & Motion จากโค้ด</p>
-                </div>
-
-                <div className="space-y-4 mb-8 flex-grow">
-                   <div className="bg-[#FAF7F2] p-4 rounded-xl border border-[#EFE8DE]">
-                      <p className="text-sm text-[#5C534C] font-light mb-2"><span className="text-amber-700 font-semibold">เหมาะสำหรับ:</span> Creator, Video Editor, แบรนด์ และทีม Social Media</p>
-                   </div>
-                   <ul className="space-y-2 text-sm text-[#5C534C] font-light">
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-amber-600 shrink-0"/>
-                        <span><strong>Talking Avatar & Voice:</strong> สร้าง AI Talking Person & Voice</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-amber-600 shrink-0"/>
-                        <span><strong>HTML Motion Video:</strong> สร้าง Motion Video จาก HTML</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-amber-600 shrink-0"/>
-                        <span><strong>AI Video Editor:</strong> สร้างระบบ AI Video Editor ส่วนตัว</span>
-                      </li>
-                   </ul>
-                </div>
-
-                <div className="border-t border-[#EFE8DE] pt-6">
-                   <div className="flex justify-between items-end mb-4">
-                      <div>
-                        <p className="text-xs text-slate-400 line-through">ราคาปกติ 8,900 บาท</p>
-                        <p className="text-2xl font-bold text-[#2D2723]">4,900 THB</p>
-                      </div>
-                      <span className="text-xs text-[#5C534C] bg-[#FAF7F2] px-2 py-1 rounded border border-[#EFE8DE]">Private / Online</span>
-                   </div>
-                   <a href={lineLink} target="_blank" rel="noreferrer" className="block w-full text-center bg-white border border-amber-600 text-amber-700 hover:bg-amber-600 hover:text-white font-medium py-3 rounded-lg transition">
-                      สอบถามรายละเอียด
-                   </a>
-                </div>
-              </div>
-
-              {/* Course 5: AI Automation + AI Agent */}
-              <div className="bg-white border border-[#EFE8DE] rounded-2xl p-8 hover:border-emerald-300 transition duration-300 flex flex-col relative group shadow-sm hover:shadow-md">
-                <div className="absolute top-0 right-0 p-4 opacity-40 group-hover:opacity-100 transition">
-                   <Zap size={40} className="text-emerald-300" />
-                </div>
-                
-                <div className="mb-6">
-                  <div className="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded mb-3">FOR BUSINESS AUTOMATION</div>
-                  <h4 className="text-2xl font-bold text-[#2D2723] mb-2">AI Automation & Agent</h4>
-                  <p className="text-[#5C534C] font-light">สร้างระบบอัตโนมัติ n8n & AI Agent</p>
-                </div>
-
-                <div className="space-y-4 mb-8 flex-grow">
-                   <div className="bg-[#FAF7F2] p-4 rounded-xl border border-[#EFE8DE]">
-                      <p className="text-sm text-[#5C534C] font-light mb-2"><span className="text-emerald-700 font-semibold">สอนร่วมกับ:</span> Partner AI Engineer เพิ่มความน่าเชื่อถือทางด้าน Technical</p>
-                   </div>
-                   <ul className="space-y-2 text-sm text-[#5C534C] font-light">
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-emerald-600 shrink-0"/>
-                        <span><strong>n8n Workflows:</strong> เชื่อม Forms, Gmail, Sheets, LINE OA</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-emerald-600 shrink-0"/>
-                        <span><strong>AI Agent Tools:</strong> ตอบลูกค้า สรุปอีเมล CRM Follow-up</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-emerald-600 shrink-0"/>
-                        <span><strong>Notion Templates:</strong> แจก Template Workflows พร้อมใช้</span>
-                      </li>
-                   </ul>
-                </div>
-
-                <div className="border-t border-[#EFE8DE] pt-6">
-                   <div className="flex justify-between items-end mb-4">
-                      <div>
-                        <p className="text-xs text-slate-400 line-through">ราคาปกติ 8,900 บาท</p>
-                        <p className="text-2xl font-bold text-[#2D2723]">4,900 THB</p>
-                      </div>
-                      <span className="text-xs text-[#5C534C] bg-[#FAF7F2] px-2 py-1 rounded border border-[#EFE8DE]">Private / Online</span>
-                   </div>
-                   <a href={lineLink} target="_blank" rel="noreferrer" className="block w-full text-center bg-white border border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white font-medium py-3 rounded-lg transition">
-                      จองเวลาเรียน
-                   </a>
-                </div>
-              </div>
-
-              {/* Course 6: Build Your Own AI Content Tool */}
-              <div className="bg-white border border-[#EFE8DE] rounded-2xl p-8 hover:border-amber-400 transition duration-300 flex flex-col relative group shadow-sm hover:shadow-md">
-                <div className="absolute top-0 right-0 p-4 opacity-40 group-hover:opacity-100 transition">
-                   <Wrench size={40} className="text-amber-400" />
-                </div>
-                
-                <div className="mb-6">
-                  <div className="inline-block bg-amber-100 text-amber-900 text-xs font-bold px-2 py-1 rounded mb-3">PROJECT-BASED</div>
-                  <h4 className="text-2xl font-bold text-[#2D2723] mb-2">สร้าง AI Content Tool ส่วนตัว</h4>
-                  <p className="text-[#5C534C] font-light">เรียนจบได้เครื่องมือกลับไปใช้งานจริง</p>
-                </div>
-
-                <div className="space-y-4 mb-8 flex-grow">
-                   <div className="bg-[#FAF7F2] p-4 rounded-xl border border-[#EFE8DE]">
-                      <p className="text-sm text-[#5C534C] font-light mb-2"><span className="text-orange-600 font-semibold">จุดเด่น:</span> เลือกสร้าง Tool ของตัวเอง เช่น Carousel, UGC Generator, Script Generator</p>
-                   </div>
-                   <ul className="space-y-2 text-sm text-[#5C534C] font-light">
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-orange-600 shrink-0"/>
-                        <span><strong>Prompt System:</strong> ออกแบบระบบ Prompt & UX ก่อนสร้าง</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-orange-600 shrink-0"/>
-                        <span><strong>Drive Auto-save:</strong> บันทึกผลลัพธ์เข้า Google Drive อัตโนมัติ</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-orange-600 shrink-0"/>
-                        <span><strong>Digital Product:</strong> แพ็กเป็นบริการ หรือขายเป็น Digital Product</span>
-                      </li>
-                   </ul>
-                </div>
-
-                <div className="border-t border-[#EFE8DE] pt-6">
-                   <div className="flex justify-between items-end mb-4">
-                      <div>
-                        <p className="text-xs text-slate-400 line-through">ราคาปกติ 6,900 บาท</p>
-                        <p className="text-2xl font-bold text-[#2D2723]">3,500 THB</p>
-                      </div>
-                      <span className="text-xs text-[#5C534C] bg-[#FAF7F2] px-2 py-1 rounded border border-[#EFE8DE]">Workshop</span>
-                   </div>
-                   <a href={lineLink} target="_blank" rel="noreferrer" className="block w-full text-center bg-white border border-amber-600 text-amber-700 hover:bg-amber-600 hover:text-white font-medium py-3 rounded-lg transition">
-                      สนใจทำโปรเจกต์
-                   </a>
-                </div>
-              </div>
-
-              {/* Course 7: Google Automation & Simple Web */}
-              <div className="bg-white border border-[#EFE8DE] rounded-2xl p-8 hover:border-emerald-300 transition duration-300 flex flex-col relative group shadow-sm hover:shadow-md sm:col-span-2 lg:col-span-1">
-                <div className="absolute top-0 right-0 p-4 opacity-40 group-hover:opacity-100 transition">
-                   <Sheet size={40} className="text-emerald-300" />
-                </div>
-                
-                <div className="mb-6">
-                  <div className="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-2 py-1 rounded mb-3">POPULAR FOR WORK</div>
-                  <h4 className="text-2xl font-bold text-[#2D2723] mb-2">Google Automation</h4>
-                  <p className="text-[#5C534C] font-light">สร้างเว็บง่ายๆ ด้วย Gemini + Apps Script</p>
-                </div>
-
-                <div className="space-y-4 mb-8 flex-grow">
-                   <div className="bg-[#FAF7F2] p-4 rounded-xl border border-[#EFE8DE]">
-                      <p className="text-sm text-[#5C534C] font-light mb-2"><span className="text-emerald-700 font-semibold">เหมาะสำหรับ:</span> HR, บัญชี, จัดซื้อ, SME ที่ใช้ Google Sheet เป็นหลัก</p>
-                   </div>
-                   <ul className="space-y-2 text-sm text-[#5C534C] font-light">
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-emerald-600 shrink-0"/>
-                        <span><strong>Gemini Coding:</strong> ให้ AI ช่วยเขียน Code</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-emerald-600 shrink-0"/>
-                        <span><strong>Automation:</strong> แจ้งเตือน LINE, ส่งเมล Auto</span>
-                      </li>
-                      <li className="flex gap-2">
-                        <CheckCircle size={16} className="text-emerald-600 shrink-0"/>
-                        <span><strong>Simple Web App:</strong> สร้างเว็บใช้ฟรี ไม่ต้องเช่า Host</span>
-                      </li>
-                   </ul>
-                </div>
-
-                <div className="border-t border-[#EFE8DE] pt-6">
-                   <div className="flex justify-between items-end mb-4">
-                      <div>
-                        <p className="text-xs text-slate-400 line-through">ราคาปกติ 8,900 บาท</p>
-                        <p className="text-2xl font-bold text-[#2D2723]">4,900 THB</p>
-                      </div>
-                      <span className="text-xs text-[#5C534C] bg-[#FAF7F2] px-2 py-1 rounded border border-[#EFE8DE]">Private / Online</span>
-                   </div>
-                   <a href={lineLink} target="_blank" rel="noreferrer" className="block w-full text-center bg-white border border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white font-medium py-3 rounded-lg transition">
-                      จองเวลาเรียน
-                   </a>
-                </div>
-              </div>
-
+            <div className="pt-6 md:pt-0">
+              <p className="text-xs font-bold tracking-widest text-neutral-400 uppercase mb-2">ยอดขายที่ช่วยเพิ่มขึ้น</p>
+              <h3 className="font-syne text-5xl sm:text-6xl font-extrabold tracking-tight mb-2">฿150,000+</h3>
+              <p className="text-xs text-neutral-500 font-light">ต่อเดือนจากระบบ Automation</p>
             </div>
 
-            {/* Mini Courses Overview */}
-            <div className="bg-[#FAF7F2] border border-[#EFE8DE] p-8 rounded-3xl mb-16">
-              <h4 className="font-bold text-xl text-[#2D2723] mb-2 text-center">คอร์สเสริม & Mini Workshops เฉพาะทาง</h4>
-              <p className="text-[#5C534C] text-sm font-light text-center mb-8">เปิดรับในรูปแบบ Mini Course, Special Workshop หรือ In-House Bonus</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {[
-                  { title: 'Google Sheets Dashboard', desc: 'ทำ Dashboard ด้วย AI & Apps Script' },
-                  { title: 'Claude Skills สำหรับธุรกิจ', desc: 'สร้างและใช้ Claude Skills ปลดล็อกงาน' },
-                  { title: 'Prompt Eng + Gemini Gems', desc: 'สร้าง AI ผู้ช่วยประจำตำแหน่ง' },
-                  { title: 'Reverse Engineer Systems', desc: 'แกะโค้ด เว็บไซต์ และ Workflow' },
-                  { title: 'Digital Product & Sales Auto', desc: 'สร้างระบบขายและส่งสินค้าอัตโนมัติ' },
-                  { title: 'AI Tools 10 ตัวเริ่มต้น', desc: 'ปูพื้นฐาน AI ทำงานเร็วขึ้น 10x' },
-                  { title: 'Build with Gemini Canvas', desc: 'ตั้งแต่ปั้นไอเดียจน Deploy เว็บจริง' }
-                ].map((item, idx) => (
-                  <div key={idx} className="bg-white p-4 rounded-xl border border-[#EFE8DE] shadow-sm">
-                    <span className="text-orange-600 font-bold text-xs">MINI WORKSHOP #{idx+1}</span>
-                    <h5 className="font-bold text-[#2D2723] text-sm mt-1">{item.title}</h5>
-                    <p className="text-[#5C534C] text-xs font-light mt-1">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
+            <div className="pt-6 md:pt-0">
+              <p className="text-xs font-bold tracking-widest text-neutral-400 uppercase mb-2">ประหยัดเวลาการทำงาน</p>
+              <h3 className="font-syne text-5xl sm:text-6xl font-extrabold tracking-tight mb-2">1,200 hrs</h3>
+              <p className="text-xs text-neutral-500 font-light">ลดงาน Manual ซ้ำซ้อนตลอดปี</p>
             </div>
 
-            {/* Service & Pricing Tiers Grid */}
-            <div className="bg-white border border-[#EFE8DE] rounded-3xl p-8 shadow-sm">
-              <h4 className="font-bold text-2xl text-[#2D2723] mb-2 text-center">โครงสร้างบริการและราคาแนะนำ (Service Tiers)</h4>
-              <p className="text-[#5C534C] text-sm font-light text-center mb-8">เลือกรูปแบบที่เหมาะกับงบประมาณและเป้าหมายของคุณ</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <div className="bg-[#FAF7F2] p-6 rounded-2xl border border-[#EFE8DE]">
-                  <span className="text-xs font-bold text-amber-900 bg-amber-100 px-2.5 py-1 rounded-md">ระดับเริ่มต้น</span>
-                  <h5 className="font-bold text-[#2D2723] text-lg mt-3">eBook / Prompt Pack</h5>
-                  <p className="text-[#5C534C] text-xs font-light mb-3">Template และชุดคำสั่งสำเร็จรูป</p>
-                  <p className="text-2xl font-bold text-orange-600">299 – 990 THB</p>
-                </div>
-
-                <div className="bg-[#FAF7F2] p-6 rounded-2xl border border-[#EFE8DE]">
-                  <span className="text-xs font-bold text-amber-900 bg-amber-100 px-2.5 py-1 rounded-md">Workshop</span>
-                  <h5 className="font-bold text-[#2D2723] text-lg mt-3">เรียนสด 2–3 ชั่วโมง</h5>
-                  <p className="text-[#5C534C] text-xs font-light mb-3">ทำเสร็จ 1 โปรเจกต์ใช้งานจริง</p>
-                  <p className="text-2xl font-bold text-orange-600">1,500 – 2,900 THB</p>
-                </div>
-
-                <div className="bg-[#FAF7F2] p-6 rounded-2xl border border-[#EFE8DE]">
-                  <span className="text-xs font-bold text-amber-900 bg-amber-100 px-2.5 py-1 rounded-md">คอร์สหลัก</span>
-                  <h5 className="font-bold text-[#2D2723] text-lg mt-3">คอร์สเรียน + Community</h5>
-                  <p className="text-[#5C534C] text-xs font-light mb-3">วิดีโอ + Dashboard + Prompt + ชุมชนดูแล</p>
-                  <p className="text-2xl font-bold text-orange-600">2,900 – 4,900 THB</p>
-                </div>
-
-                <div className="bg-amber-50 p-6 rounded-2xl border border-amber-200">
-                  <span className="text-xs font-bold text-white bg-orange-600 px-2.5 py-1 rounded-md">เรียนส่วนตัว</span>
-                  <h5 className="font-bold text-[#2D2723] text-lg mt-3">Customized Private</h5>
-                  <p className="text-[#5C534C] text-xs font-light mb-3">ปรับเนื้อหาและโค้ชตามโปรเจกต์ผู้เรียน</p>
-                  <p className="text-2xl font-bold text-orange-700">5,900 – 9,900 THB</p>
-                </div>
-
-                <div className="bg-[#FAF7F2] p-6 rounded-2xl border border-[#EFE8DE]">
-                  <span className="text-xs font-bold text-amber-900 bg-amber-100 px-2.5 py-1 rounded-md">Consultation</span>
-                  <h5 className="font-bold text-[#2D2723] text-lg mt-3">ที่ปรึกษาธุรกิจ & AI</h5>
-                  <p className="text-[#5C534C] text-xs font-light mb-3">วิเคราะห์และวางระบบตรงจุด</p>
-                  <p className="text-2xl font-bold text-amber-700">เริ่ม 2,000 THB/ชม.</p>
-                </div>
-
-                <div className="bg-[#FAF7F2] p-6 rounded-2xl border border-[#EFE8DE]">
-                  <span className="text-xs font-bold text-rose-800 bg-rose-100 px-2.5 py-1 rounded-md">Done-for-You</span>
-                  <h5 className="font-bold text-[#2D2723] text-lg mt-3">รับทำระบบพร้อมใช้</h5>
-                  <p className="text-[#5C534C] text-xs font-light mb-3">มดและทีมสร้างระบบให้พร้อมใช้</p>
-                  <p className="text-2xl font-bold text-rose-600">ประเมินตาม Scope</p>
-                </div>
-
-              </div>
+            <div className="pt-6 md:pt-0">
+              <p className="text-xs font-bold tracking-widest text-neutral-400 uppercase mb-2">ธุรกิจที่เติบโตไปกับเรา</p>
+              <h3 className="font-syne text-5xl sm:text-6xl font-extrabold tracking-tight mb-2">45+</h3>
+              <p className="text-xs text-neutral-500 font-light">ความไว้วางใจจากผู้ประกอบการ</p>
             </div>
 
           </div>
         </div>
       </section>
 
-      {/* 2. Consultation Section */}
-      <section id="consult" className="py-24 px-4 scroll-mt-16 bg-[#F5F0E8] relative border-t border-[#EFE8DE]">
+      {/* 5. EXPERTISE SECTION (01 Education, 02 Short Courses, 03 Consultation, 04 Development, 05 AI Automation) */}
+      <section id="expertise" className="py-24 px-6 sm:px-8 lg:px-12 scroll-mt-20 bg-[#F5F3EF]">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100/80 text-amber-900 text-sm font-semibold mb-4 border border-amber-200">
-              SERVICE 2: CONSULTATION
+          
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16">
+            <div>
+              <h2 className="font-syne text-4xl sm:text-6xl font-extrabold uppercase tracking-tight text-neutral-900">
+                EXPERTISE<span className="text-neutral-400">.</span>
+              </h2>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-[#2D2723]">AI & Business Automation Consultant</h2>
-            <p className="text-[#5C534C] text-lg max-w-2xl font-light">
-              ปลดล็อกศักยภาพทีมงานและธุรกิจของคุณ ด้วยคำแนะนำจากผู้เชี่ยวชาญ ลดงานซ้ำซ้อน เพิ่มเวลาโฟกัสสิ่งที่สำคัญ
-            </p>
+            <span className="text-xs font-bold tracking-[0.2em] text-neutral-500 uppercase mt-4 md:mt-0">
+              OUR DISCIPLINES
+            </span>
           </div>
 
-          <div className="bg-white border border-[#EFE8DE] rounded-3xl p-8 md:p-12 flex flex-col md:flex-row gap-12 hover:border-amber-300 transition duration-500 shadow-sm hover:shadow-lg">
-            <div className="md:w-1/2 space-y-8">
-              <div>
-                <h3 className="text-2xl font-bold text-[#2D2723] mb-4">บริการนี้เหมาะกับใคร?</h3>
-                <ul className="space-y-4">
-                  <li className="flex gap-4">
-                    <div className="bg-amber-100 p-2 rounded-lg text-amber-800 h-fit"><TrendingUp size={20}/></div>
-                    <div>
-                      <h4 className="font-bold text-[#2D2723]">เจ้าของธุรกิจ</h4>
-                      <p className="text-[#5C534C] text-sm font-light">ที่ต้องการนำ AI มาลดต้นทุนและขั้นตอนการทำงาน</p>
-                    </div>
-                  </li>
-                  <li className="flex gap-4">
-                    <div className="bg-amber-100 p-2 rounded-lg text-amber-800 h-fit"><Layout size={20}/></div>
-                    <div>
-                      <h4 className="font-bold text-[#2D2723]">ทีมงาน Operations</h4>
-                      <p className="text-[#5C534C] text-sm font-light">ที่ต้องการวางระบบ Workflow อัตโนมัติ (Automation)</p>
-                    </div>
-                  </li>
-                  <li className="flex gap-4">
-                    <div className="bg-amber-100 p-2 rounded-lg text-amber-800 h-fit"><Server size={20}/></div>
-                    <div>
-                      <h4 className="font-bold text-[#2D2723]">ผู้ที่ต้องการเลือก Tools</h4>
-                      <p className="text-[#5C534C] text-sm font-light">ต้องการคำแนะนำการเลือก Tech Stack ที่เหมาะสมกับธุรกิจที่สุด</p>
-                    </div>
-                  </li>
-                </ul>
+          {/* 01 EDUCATION SECTION */}
+          <div className="mb-24">
+            <div className="flex items-baseline gap-4 mb-6">
+              <span className="font-syne text-4xl sm:text-5xl font-extrabold text-neutral-300">01</span>
+              <h3 className="font-syne text-3xl sm:text-4xl font-bold uppercase text-neutral-900">Education</h3>
+            </div>
+            
+            <p className="text-neutral-600 text-base max-w-3xl font-light mb-10 leading-relaxed">
+              เปลี่ยนไอเดียให้เป็น Web จริง ด้วย Vibe Coding Master Route คอร์สเรียนระดับพรีเมียมที่จะสอนคุณสร้างเว็บไซต์และแอปพลิเคชันด้วย AI และ Google Ecosystem เต็มรูปแบบ โดยที่คุณไม่จำเป็นต้องมีพื้นฐานการเขียนโค้ดมาก่อน
+            </p>
+
+            {/* Why This Course - 4 Light Cards */}
+            <div className="mb-10">
+              <h4 className="font-bold text-lg mb-6 text-neutral-900">ทำไมต้องคอร์สนี้?</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                
+                <div className="bg-white/80 border border-neutral-300/70 p-6 rounded-2xl shadow-sm">
+                  <h5 className="font-bold text-sm text-neutral-900 mb-2">ไม่ใช่แค่สร้างเว็บหน้าเดียว</h5>
+                  <p className="text-xs text-neutral-600 font-light leading-relaxed">
+                    สอนสร้าง Web App มีระบบสมาชิก (Login) และฐานข้อมูล (Database)
+                  </p>
+                </div>
+
+                <div className="bg-white/80 border border-neutral-300/70 p-6 rounded-2xl shadow-sm">
+                  <h5 className="font-bold text-sm text-neutral-900 mb-2">คิดแบบ SAAS</h5>
+                  <p className="text-xs text-neutral-600 font-light leading-relaxed">
+                    สอนระบบคิดการสร้าง "บริการ" เพื่อแก้ปัญหาผู้ใช้และสร้างรายได้ระยะยาว
+                  </p>
+                </div>
+
+                <div className="bg-white/80 border border-neutral-300/70 p-6 rounded-2xl shadow-sm">
+                  <h5 className="font-bold text-sm text-neutral-900 mb-2">ใช้ AI ทำงานเบื้องหลัง</h5>
+                  <p className="text-xs text-neutral-600 font-light leading-relaxed">
+                    ลดเวลา Coding เองด้วยการใช้ AI ช่วยเขียนโครงสร้างที่ถูกต้อง
+                  </p>
+                </div>
+
+                <div className="bg-white/80 border border-neutral-300/70 p-6 rounded-2xl shadow-sm">
+                  <h5 className="font-bold text-sm text-neutral-900 mb-2">สอนทำระบบ E-COMMERCE</h5>
+                  <p className="text-xs text-neutral-600 font-light leading-relaxed">
+                    สำหรับสินค้าดิจิตอล (E-book, Course) พร้อมระบบชำระเงินออโต้
+                  </p>
+                </div>
+
               </div>
             </div>
 
-            <div className="md:w-1/2 bg-[#FAF7F2] rounded-2xl p-8 border border-[#EFE8DE] flex flex-col justify-center">
-              <h4 className="text-xl font-bold text-[#2D2723] mb-6 text-center">รายละเอียดค่าบริการ</h4>
-              
-              <div className="space-y-6">
-                <div className="flex justify-between items-center border-b border-[#EFE8DE] pb-4">
-                  <span className="text-[#5C534C] font-light">รูปแบบการปรึกษา</span>
-                  <span className="text-[#2D2723] font-medium">Online Meeting (Zoom/Google Meet)</span>
+            {/* Vibe Coding Dark Highlight Card */}
+            <div className="bg-neutral-900 text-white rounded-3xl p-8 lg:p-12 shadow-2xl relative overflow-hidden">
+              <div className="flex flex-col lg:flex-row justify-between items-center gap-10">
+                <div className="lg:w-7/12 space-y-6">
+                  <span className="bg-rose-500 text-white text-[10px] font-bold px-3 py-1 rounded-full tracking-wider uppercase">
+                    HOT SELLING
+                  </span>
+                  <p className="text-neutral-400 text-xs tracking-widest uppercase">แพ็กเกจครบชุด | ออนไลน์ + วิดีโอซ้ำได้ตลอด</p>
+                  <h4 className="font-syne text-3xl sm:text-4xl font-extrabold">Vibe Coding Master Route</h4>
+                  
+                  <div className="space-y-3 text-sm text-neutral-300 font-light">
+                    <div className="flex items-center gap-2"><CheckCircle size={16} className="text-white shrink-0"/> <span><strong>เรียนครบทุกบท Vibe Coding:</strong> Workshop สร้าง AI Web App สำหรับ MVP</span></div>
+                    <div className="flex items-center gap-2"><CheckCircle size={16} className="text-white shrink-0"/> <span><strong>Full Stack Skills:</strong> สอน AI Coding, API, หลังบ้าน และคลาวด์พื้นฐาน</span></div>
+                    <div className="flex items-center gap-2"><CheckCircle size={16} className="text-white shrink-0"/> <span><strong>Self-Paced Video:</strong> ทบทวนได้ตลอดชีวิต พร้อมอัปเดตบทเรียนฟรีตลอดปี</span></div>
+                    <div className="flex items-center gap-2"><CheckCircle size={16} className="text-white shrink-0"/> <span><strong>ดูแลใกล้ชิด:</strong> เข้ากลุ่ม Vibe Coding with Modty ดูแล 60 วัน</span></div>
+                  </div>
                 </div>
-                 <div className="flex justify-between items-center border-b border-[#EFE8DE] pb-4">
-                  <span className="text-[#5C534C] font-light">การดูแลหลังปรึกษา</span>
-                  <span className="text-emerald-700 font-medium">ดูแลต่อ 7 วัน</span>
-                </div>
-                 <div className="flex justify-between items-center border-b border-[#EFE8DE] pb-4">
-                  <span className="text-[#5C534C] font-light">ที่ปรึกษาระยะยาว</span>
-                  <span className="text-[#2D2723] font-medium">ประจำโปรเจกต์ (สอบถามราคา)</span>
-                </div>
-                
-                <div className="bg-white border border-amber-200 rounded-xl p-6 text-center mt-6 shadow-sm">
-                  <p className="text-[#5C534C] text-sm mb-1 font-light">ราคาเริ่มต้นเพียง</p>
-                  <div className="text-4xl font-bold text-orange-600 mb-4">2,000 THB <span className="text-lg text-slate-400 font-normal">/ชั่วโมง</span></div>
+
+                <div className="lg:w-5/12 w-full text-center lg:text-right border-t lg:border-t-0 lg:border-l border-neutral-800 pt-8 lg:pt-0 lg:pl-12">
+                  <div className="text-5xl font-syne font-extrabold text-white mb-1">2,990 <span className="text-lg font-light text-neutral-400">THB</span></div>
+                  <p className="text-neutral-500 text-xs line-through mb-1">ราคาปกติ 9,900 บาท</p>
+                  <p className="text-rose-400 text-xs font-medium mb-6">** สำหรับ 10 ท่านแรกเท่านั้น</p>
                   <a 
                     href={lineLink} 
                     target="_blank" 
                     rel="noreferrer"
-                    className="inline-flex items-center justify-center gap-2 w-full bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-700 hover:to-amber-600 text-white px-6 py-3 rounded-lg font-medium transition shadow-md"
+                    className="inline-block w-full sm:w-auto px-8 py-3.5 rounded-full border border-white text-white font-medium hover:bg-white hover:text-black transition text-sm tracking-wider uppercase"
                   >
-                    จองคิวปรึกษา
+                    สมัครเรียนทันที
                   </a>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* 3. Web Development Services */}
-      <section id="development" className="py-24 bg-white border-t border-[#EFE8DE] scroll-mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-100 text-rose-800 text-sm font-semibold mb-4 border border-rose-200">
-              SERVICE 3: DEVELOPMENT
+          </div>
+
+          {/* 02 SHORT COURSES & WORKSHOPS */}
+          <div className="mb-24">
+            <div className="flex items-baseline gap-4 mb-4">
+              <span className="font-syne text-4xl sm:text-5xl font-extrabold text-neutral-300">02</span>
+              <h3 className="font-syne text-3xl sm:text-4xl font-bold uppercase text-neutral-900">Short Courses & Workshops</h3>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-[#2D2723]">รับทำเว็บไซต์และระบบ <span className="text-rose-600">พร้อมใช้ทันที</span></h2>
-            <p className="text-[#5C534C] text-lg font-light">เหมาะสำหรับเจ้าของธุรกิจที่ต้องการความรวดเร็ว สวยงาม และรองรับการขยายตัว</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             
-            {/* Service A */}
-            <div className="bg-white border border-[#EFE8DE] rounded-2xl p-8 hover:border-rose-300 transition duration-300 flex flex-col relative overflow-hidden group shadow-sm hover:shadow-xl">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-rose-100/50 rounded-full blur-3xl -z-10 group-hover:bg-rose-100 transition"></div>
+            <p className="text-neutral-600 text-base max-w-3xl font-light mb-10">
+              คอร์สระยะสั้นและ Workshop เฉพาะทาง สำหรับผู้ที่ต้องการแก้ปัญหาเฉพาะจุด หรืออัปสกิลเครื่องมือ AI ใหม่ๆ อย่างรวดเร็ว
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               
-              <div className="mb-6">
-                <h3 className="text-2xl font-bold text-[#2D2723] mb-2">Service A: Digital Product Store</h3>
-                <p className="text-rose-600 font-medium">ระบบร้านค้าสินค้าดิจิตอล</p>
-              </div>
-
-              <div className="space-y-4 mb-8 flex-grow">
-                <p className="text-[#5C534C] leading-relaxed font-light">
-                  สร้างเว็บไซต์สำหรับขายสินค้า Digital (E-book, คอร์สเรียน, Template, Preset) เชื่อมต่อระบบชำระเงิน และระบบส่งสินค้าอัตโนมัติ
-                </p>
-                <div className="bg-[#FAF7F2] p-4 rounded-xl space-y-2 border border-[#EFE8DE]">
-                    <div className="flex items-center gap-2 text-sm text-[#5C534C] font-light">
-                        <CheckCircle size={16} className="text-rose-600"/> ระบบหลังบ้านจัดการง่าย
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-[#5C534C] font-light">
-                        <CheckCircle size={16} className="text-rose-600"/> ดีไซน์ทันสมัย (Modern UI)
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-[#5C534C] font-light">
-                        <CheckCircle size={16} className="text-rose-600"/> รองรับการขยายตัว (Scalable)
-                    </div>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between border-t border-[#EFE8DE] pt-6">
+              {/* Card 1: AI System Architect */}
+              <div className="bg-white/90 border border-neutral-300 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition">
                 <div>
-                    <p className="text-sm text-slate-500 font-light">ราคาเริ่มต้น</p>
-                    <p className="text-2xl font-bold text-[#2D2723]">3,000 THB</p>
+                  <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase">AI PRODUCTIVITY</span>
+                  <h4 className="font-bold text-lg text-neutral-900 mt-2 mb-1">AI System Architect</h4>
+                  <p className="text-xs text-neutral-600 font-light mb-4">สร้างผู้ช่วยส่วนตัว ลดงานซ้ำซาก</p>
+                  <ul className="space-y-2 text-xs text-neutral-600 font-light mb-6">
+                    <li>• <strong>Prompt Engineering:</strong> สั่งงาน AI ให้แม่นยำ</li>
+                    <li>• <strong>Custom Gems:</strong> สอนสร้าง AI ผู้ช่วยส่วนตัว</li>
+                    <li>• <strong>Bonus:</strong> แถมสูตร Gen ภาพ 5 สไตล์</li>
+                  </ul>
                 </div>
-                <a href={lineLink} target="_blank" rel="noreferrer" className="px-6 py-2 rounded-lg border border-rose-600 text-rose-600 hover:bg-rose-600 hover:text-white transition">
-                    สนใจทำเว็บนี้
+                <div className="pt-4 border-t border-neutral-200">
+                  <div className="text-xl font-bold text-neutral-900 mb-3">1,290 <span className="text-xs font-normal text-neutral-500">THB</span></div>
+                  <a href={lineLink} target="_blank" rel="noreferrer" className="block w-full text-center py-2.5 rounded-full border border-neutral-900 text-neutral-900 text-xs font-medium hover:bg-neutral-900 hover:text-white transition">
+                    จองเวลาเรียน
+                  </a>
+                </div>
+              </div>
+
+              {/* Card 2: AI Video & Content (Dark Card) */}
+              <div className="bg-neutral-900 text-white p-6 rounded-2xl flex flex-col justify-between shadow-xl">
+                <div>
+                  <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase">CONTENT CREATOR</span>
+                  <h4 className="font-bold text-lg mt-2 mb-1">AI Video & Content</h4>
+                  <p className="text-xs text-neutral-400 font-light mb-4">ปั้นคลิปรีวิวระดับโปร ด้วย AI</p>
+                  <ul className="space-y-2 text-xs text-neutral-300 font-light mb-6">
+                    <li>• <strong>Grok, Flow & Avatar:</strong> สคริปต์และวิดีโอ AI</li>
+                    <li>• <strong>Affiliate Workflow:</strong> ทำคลิปรีวิวให้ขายได้จริง</li>
+                    <li>• <strong>Consistency:</strong> วางแผน Prompt ต่อเนื่อง</li>
+                  </ul>
+                </div>
+                <div className="pt-4 border-t border-neutral-800">
+                  <div className="text-xl font-bold text-white mb-3">2,990 <span className="text-xs font-normal text-neutral-400">THB</span></div>
+                  <a href={lineLink} target="_blank" rel="noreferrer" className="block w-full text-center py-2.5 rounded-full border border-white text-white text-xs font-medium hover:bg-white hover:text-black transition">
+                    สอบถามรายละเอียด
+                  </a>
+                </div>
+              </div>
+
+              {/* Card 3: Google Automation */}
+              <div className="bg-white/90 border border-neutral-300 p-6 rounded-2xl flex flex-col justify-between hover:shadow-md transition">
+                <div>
+                  <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase">POPULAR FOR WORK</span>
+                  <h4 className="font-bold text-lg text-neutral-900 mt-2 mb-1">Google Automation</h4>
+                  <p className="text-xs text-neutral-600 font-light mb-4">สร้างเว็บง่ายๆ ด้วย Gemini + Apps Script</p>
+                  <ul className="space-y-2 text-xs text-neutral-600 font-light mb-6">
+                    <li>• <strong>Gemini Coding:</strong> ให้ AI ช่วยเขียน Code</li>
+                    <li>• <strong>Automation:</strong> แจ้งเตือน LINE, ส่งเมล Auto</li>
+                    <li>• <strong>Free Web App:</strong> สร้างเว็บใช้ฟรี ไม่ต้องเช่า Host</li>
+                  </ul>
+                </div>
+                <div className="pt-4 border-t border-neutral-200">
+                  <div className="text-xl font-bold text-neutral-900 mb-3">2,990 <span className="text-xs font-normal text-neutral-500">THB</span></div>
+                  <a href={lineLink} target="_blank" rel="noreferrer" className="block w-full text-center py-2.5 rounded-full border border-neutral-900 text-neutral-900 text-xs font-medium hover:bg-neutral-900 hover:text-white transition">
+                    จองเวลาเรียน
+                  </a>
+                </div>
+              </div>
+
+              {/* Card 4: E-Commerce Digital Product (Dark Card) */}
+              <div className="bg-neutral-900 text-white p-6 rounded-2xl flex flex-col justify-between shadow-xl">
+                <div>
+                  <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase">PASSIVE INCOME</span>
+                  <h4 className="font-bold text-lg mt-2 mb-1">E-Commerce Digital Product</h4>
+                  <p className="text-xs text-neutral-400 font-light mb-4">ระบบร้านค้าสินค้าดิจิตอลอัตโนมัติ</p>
+                  <ul className="space-y-2 text-xs text-neutral-300 font-light mb-6">
+                    <li>• <strong>Conversion-Focused:</strong> เพิ่มยอดขาย</li>
+                    <li>• <strong>Dashboard:</strong> สรุปยอดขายดูง่าย</li>
+                    <li>• <strong>Auto Delivery:</strong> ส่งสินค้าอัตโนมัติ</li>
+                  </ul>
+                </div>
+                <div className="pt-4 border-t border-neutral-800">
+                  <div className="text-xl font-bold text-white mb-3">2,990 <span className="text-xs font-normal text-neutral-400">THB</span></div>
+                  <a href={lineLink} target="_blank" rel="noreferrer" className="block w-full text-center py-2.5 rounded-full border border-white text-white text-xs font-medium hover:bg-white hover:text-black transition">
+                    จองเวลาเรียน
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          {/* 03 CONSULTATION SECTION */}
+          <div className="mb-24">
+            <div className="flex items-baseline gap-4 mb-4">
+              <span className="font-syne text-4xl sm:text-5xl font-extrabold text-neutral-300">03</span>
+              <h3 className="font-syne text-3xl sm:text-4xl font-bold uppercase text-neutral-900">Consultation</h3>
+            </div>
+
+            <p className="text-neutral-600 text-base max-w-3xl font-light mb-10">
+              <strong>AI & Business Automation Consultant</strong> — ปลดล็อกศักยภาพทีมงานและธุรกิจของคุณ ด้วยคำแนะนำจากผู้เชี่ยวชาญ ลดงานซ้ำซ้อน เพิ่มเวลาโฟกัสในสิ่งที่คุณต้องการจริงๆ
+            </p>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div className="lg:col-span-7 bg-white/90 border border-neutral-300 p-8 rounded-3xl space-y-6 shadow-sm">
+                <h4 className="font-bold text-lg text-neutral-900">บริการนี้เหมาะกับใคร?</h4>
+                <div className="space-y-4 text-sm text-neutral-700 font-light">
+                  <div className="flex gap-3">
+                    <div className="w-2 h-2 rounded-full bg-neutral-900 mt-2 shrink-0"></div>
+                    <div><strong>เจ้าของธุรกิจ:</strong> นำ AI มาลดต้นทุนและขั้นตอนการทำงาน</div>
+                  </div>
+                  <div className="flex gap-3">
+                    <div className="w-2 h-2 rounded-full bg-neutral-900 mt-2 shrink-0"></div>
+                    <div><strong>ทีม Operations:</strong> วางระบบ Workflow อัตโนมัติ ลดงาน Manual</div>
+                  </div>
+                  <div className="flex gap-3">
+                    <div className="w-2 h-2 rounded-full bg-neutral-900 mt-2 shrink-0"></div>
+                    <div><strong>ผู้นำยุคใหม่:</strong> เลือก Tech Stack ที่เหมาะสมกับการ Scale ในอนาคต</div>
+                  </div>
+                  <div className="flex gap-3">
+                    <div className="w-2 h-2 rounded-full bg-neutral-900 mt-2 shrink-0"></div>
+                    <div><strong>AI Enthusiast:</strong> ต้องการเจาะลึกการใช้ AI ในระดับธุรกิจ</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="lg:col-span-5 bg-neutral-900 text-white p-8 rounded-3xl shadow-xl space-y-6">
+                <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase">PRIVATE SESSION</span>
+                <h4 className="font-syne text-2xl font-bold">รายละเอียดค่าบริการ</h4>
+                <div className="space-y-3 text-xs text-neutral-300 font-light border-y border-neutral-800 py-4">
+                  <div className="flex justify-between"><span>การดูแลหลังปรึกษา</span><span className="text-white font-medium">ดูแลต่อ 7 วัน</span></div>
+                  <div className="flex justify-between"><span>รีวิวยอดเดิม</span><span className="text-white font-medium">รวมในแพ็กเกจ</span></div>
+                </div>
+                <div className="text-3xl font-syne font-extrabold">2,000 <span className="text-xs font-light text-neutral-400">THB/H</span></div>
+                <a href={lineLink} target="_blank" rel="noreferrer" className="block w-full text-center py-3 rounded-full border border-white text-white text-xs font-medium hover:bg-white hover:text-black transition">
+                  จองคิวปรึกษา
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* 04 DEVELOPMENT SECTION */}
+          <div className="mb-24">
+            <div className="flex items-baseline gap-4 mb-4">
+              <span className="font-syne text-4xl sm:text-5xl font-extrabold text-neutral-300">04</span>
+              <h3 className="font-syne text-3xl sm:text-4xl font-bold uppercase text-neutral-900">Development</h3>
+            </div>
+
+            <p className="text-neutral-600 text-base max-w-3xl font-light mb-10">
+              <strong>รับทำเว็บไซต์และระบบ พร้อมใช้ทันที</strong> — พัฒนาด้วยเทคโนโลยีล่าสุด รวดเร็ว สวยงาม และรองรับการขยายธุรกิจในอนาคต
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              
+              <div className="bg-white/90 border border-neutral-300 p-8 rounded-3xl flex flex-col justify-between shadow-sm">
+                <div>
+                  <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase">E-COMMERCE</span>
+                  <h4 className="font-bold text-xl text-neutral-900 mt-2 mb-2">Digital Product Store</h4>
+                  <p className="text-sm text-neutral-600 font-light mb-6">ระบบร้านค้าสินค้าดิจิตอลอัตโนมัติ</p>
+                  <ul className="space-y-2 text-xs text-neutral-600 font-light mb-6">
+                    <li>• ดีไซน์ Conversion-Focused: เพิ่มยอดขาย</li>
+                    <li>• หน้า Dashboard: สรุปยอดขายดูง่าย</li>
+                    <li>• ส่งสินค้าและไฟล์อัตโนมัติทันทีหลังชำระเงิน</li>
+                  </ul>
+                </div>
+                <div className="pt-6 border-t border-neutral-200">
+                  <p className="text-[10px] text-neutral-400 uppercase tracking-widest">STARTING FROM</p>
+                  <div className="text-2xl font-bold text-neutral-900 mb-4">3,000 <span className="text-xs font-normal text-neutral-500">THB</span></div>
+                  <a href={lineLink} target="_blank" rel="noreferrer" className="block w-full text-center py-3 rounded-full border border-neutral-900 text-neutral-900 text-xs font-medium hover:bg-neutral-900 hover:text-white transition">
+                    สนใจทำเว็บไซต์
+                  </a>
+                </div>
+              </div>
+
+              <div className="bg-neutral-900 text-white p-8 rounded-3xl flex flex-col justify-between shadow-xl">
+                <div>
+                  <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase">CUSTOM SOLUTION</span>
+                  <h4 className="font-bold text-xl mt-2 mb-2">Custom Web Development</h4>
+                  <p className="text-sm text-neutral-400 font-light mb-6">ระบบเว็บไซต์ตามสั่ง (Vibe Coding Style)</p>
+                  <ul className="space-y-2 text-xs text-neutral-300 font-light mb-6">
+                    <li>• โค้ดคุณภาพสูง: ปรับแต่งและขยายได้อิสระ</li>
+                    <li>• ดูแลใกล้ชิด: ตั้งแต่เริ่มจนขึ้นระบบจริง</li>
+                    <li>• เชื่อมต่อ API และ AI Agent ตามต้องการ</li>
+                  </ul>
+                </div>
+                <div className="pt-6 border-t border-neutral-800">
+                  <p className="text-[10px] text-neutral-400 uppercase tracking-widest">STARTING FROM</p>
+                  <div className="text-2xl font-bold text-white mb-4">3,000 <span className="text-xs font-normal text-neutral-400">THB+</span></div>
+                  <a href={lineLink} target="_blank" rel="noreferrer" className="block w-full text-center py-3 rounded-full border border-white text-white text-xs font-medium hover:bg-white hover:text-black transition">
+                    สอบถามรายละเอียด
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          {/* 05 AI AUTOMATION CASE STUDY */}
+          <div className="mb-12">
+            <div className="flex items-baseline gap-4 mb-4">
+              <span className="font-syne text-4xl sm:text-5xl font-extrabold text-neutral-300">05</span>
+              <h3 className="font-syne text-3xl sm:text-4xl font-bold uppercase text-neutral-900">AI Automation Case Study</h3>
+            </div>
+            <p className="text-neutral-600 text-base max-w-3xl font-light mb-8">สร้างระบบ AI Automation ให้ธุรกิจของคุณ</p>
+
+            <div className="bg-white/90 border border-neutral-300/80 rounded-3xl p-8 lg:p-12 shadow-sm">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                
+                <div className="bg-neutral-100 p-6 rounded-2xl border border-neutral-200 text-center">
+                  <div className="h-40 bg-neutral-200 rounded-xl flex items-center justify-center text-neutral-500 font-syne font-bold text-sm mb-3">
+                    N8N WORKFLOW อัตโนมัติ
+                  </div>
+                  <h5 className="font-bold text-sm text-neutral-900 mb-1">🗄️ ฐานข้อมูลทรัพย์ NPA</h5>
+                  <p className="text-xs text-neutral-600 font-light">คลังข้อมูลทรัพย์รอการขาย (NPA) ครบถ้วน รหัสทรัพย์ ราคา ที่ตั้ง ซิงก์กับ LINE Bot</p>
+                </div>
+
+                <div className="bg-neutral-100 p-6 rounded-2xl border border-neutral-200 text-center">
+                  <div className="h-40 bg-neutral-200 rounded-xl flex items-center justify-center text-neutral-500 font-syne font-bold text-sm mb-3">
+                    LINE BOT ค้นหาทรัพย์
+                  </div>
+                  <h5 className="font-bold text-sm text-neutral-900 mb-1">🤖 LINE Search Bot</h5>
+                  <p className="text-xs text-neutral-600 font-light">ลูกค้าพิมพ์ "บ้านเดี่ยว ชลบุรี 2-5 ล้าน" AI วิเคราะห์ความต้องการ ส่งการ์ดทรัพย์พร้อมรูปและราคา</p>
+                </div>
+
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10 text-xs text-neutral-700 font-light">
+                <div className="p-4 bg-neutral-100/70 rounded-xl border border-neutral-200">
+                  <strong className="block text-neutral-900 text-sm mb-1">👥 CRM Pipeline</strong>
+                  ติดตามสถานะลูกค้าอัตโนมัติ: สอบถาม ➔ นัดดูทรัพย์ ➔ เจรจา ➔ ปิดดีล ไม่พลาดทุก Lead
+                </div>
+                <div className="p-4 bg-neutral-100/70 rounded-xl border border-neutral-200">
+                  <strong className="block text-neutral-900 text-sm mb-1">✨ AI โพสต์อัตโนมัติ</strong>
+                  เมื่อมีทรัพย์ใหม่ n8n ดึงรูป ใส่ watermark อัตโนมัติ สร้างแคปชั่น AI แล้วโพสต์ลง Facebook Groups ซื้อ-ขายบ้านทันที
+                </div>
+              </div>
+
+              <div className="text-center pt-4 border-t border-neutral-200">
+                <a 
+                  href={lineLink} 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="inline-block px-8 py-3.5 rounded-full bg-neutral-900 text-white font-medium hover:bg-black transition text-sm tracking-wider uppercase shadow-md"
+                >
+                  ติดต่อปรึกษาและวางระบบกับเรา
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 6. PORTFOLIO SECTION (02 WebApp & Website) */}
+      <section id="portfolio" className="py-24 px-6 sm:px-8 lg:px-12 scroll-mt-20 border-t border-neutral-300/60">
+        <div className="max-w-7xl mx-auto">
+          
+          <div className="mb-12">
+            <span className="text-xs font-bold tracking-[0.2em] text-neutral-500 uppercase">PORTFOLIO & PROJECTS</span>
+            <h2 className="font-syne text-4xl sm:text-5xl font-extrabold uppercase text-neutral-900 mt-2">
+              WebApp & Website<span className="text-neutral-400">.</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+            
+            {/* Project 1 */}
+            <div className="bg-white/90 border border-neutral-300 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition">
+              <div className="h-56 bg-neutral-200 flex items-center justify-center p-6 text-center border-b border-neutral-200">
+                <span className="font-syne font-bold text-neutral-600 text-lg">Retirement Planning Web App</span>
+              </div>
+              <div className="p-6 flex-grow flex flex-col justify-between">
+                <div>
+                  <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase">BESTIE INVESTING</span>
+                  <h4 className="font-bold text-lg text-neutral-900 mt-1 mb-2">Retirement Planning Web App</h4>
+                  <p className="text-xs text-neutral-600 font-light leading-relaxed mb-4">
+                    เว็บแอปวางแผนเกษียณสำหรับนักลงทุนรายย่อย แปลง Logic ทางการเงินที่ซับซ้อนให้เป็นเครื่องมือที่ใช้งานง่าย
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 mb-6 text-[10px] font-semibold text-neutral-500">
+                    <span className="px-2 py-0.5 rounded bg-neutral-100 border border-neutral-200">REACT / VITE</span>
+                    <span className="px-2 py-0.5 rounded bg-neutral-100 border border-neutral-200">TAILWIND</span>
+                    <span className="px-2 py-0.5 rounded bg-neutral-100 border border-neutral-200">VERCEL</span>
+                  </div>
+                </div>
+                <a href={lineLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-xs font-bold text-neutral-900 hover:gap-3 transition">
+                  เข้าใช้งาน <ArrowRight size={14} />
                 </a>
               </div>
             </div>
 
-            {/* Service B */}
-            <div className="bg-white border border-[#EFE8DE] rounded-2xl p-8 hover:border-emerald-400 transition duration-300 flex flex-col relative overflow-hidden group shadow-sm hover:shadow-xl">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-100/50 rounded-full blur-3xl -z-10 group-hover:bg-emerald-100 transition"></div>
-              
-              <div className="mb-6">
-                <h3 className="text-2xl font-bold text-[#2D2723] mb-2">Service B: Custom Web Development</h3>
-                <p className="text-emerald-700 font-medium">ระบบเว็บไซต์ตามสั่ง (Vibe Coding Style)</p>
+            {/* Project 2 (Dark Card) */}
+            <div className="bg-neutral-900 text-white rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between">
+              <div className="h-56 bg-neutral-800 flex items-center justify-center p-6 text-center border-b border-neutral-800">
+                <span className="font-syne font-bold text-white text-lg">Bestie Bot US</span>
               </div>
-
-              <div className="space-y-4 mb-8 flex-grow">
-                <p className="text-[#5C534C] leading-relaxed font-light">
-                  รับทำเว็บไซต์ตามความต้องการเฉพาะทาง ไม่ว่าจะเป็นระบบจัดการหอพัก, ระบบดีลเลอร์รถยนต์, หรือ Landing Page สำหรับธุรกิจเฉพาะทาง
-                </p>
-                <div className="bg-[#FAF7F2] p-4 rounded-xl space-y-2 border border-[#EFE8DE]">
-                    <div className="flex items-center gap-2 text-sm text-[#5C534C] font-light">
-                        <CheckCircle size={16} className="text-emerald-600"/> ออกแบบตามโจทย์ธุรกิจ
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-[#5C534C] font-light">
-                        <CheckCircle size={16} className="text-emerald-600"/> โค้ดคุณภาพสูง สะอาด
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-[#5C534C] font-light">
-                        <CheckCircle size={16} className="text-emerald-600"/> ปรึกษาฟีเจอร์ที่ทำได้จริง
-                    </div>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between border-t border-[#EFE8DE] pt-6">
+              <div className="p-6 flex-grow flex flex-col justify-between">
                 <div>
-                    <p className="text-sm text-slate-500 font-light">ราคาแพคเกจ</p>
-                    <p className="text-2xl font-bold text-[#2D2723]">3,000 THB <span className="text-sm font-normal text-slate-500">เริ่มต้น</span></p>
+                  <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase">BESTIE INVESTING</span>
+                  <h4 className="font-bold text-lg text-white mt-1 mb-2">Bestie Bot US</h4>
+                  <p className="text-xs text-neutral-300 font-light leading-relaxed mb-4">
+                    LINE Bot 11 ฟีเจอร์ AI — หุ้น US, คริปโต, ทองคำโลก, ETF, Market Pulse และราคาทองไทย แบบ real-time สำหรับนักลงทุนรายย่อย
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 mb-6 text-[10px] font-semibold text-neutral-400">
+                    <span className="px-2 py-0.5 rounded bg-neutral-800 border border-neutral-700">LINE BOT</span>
+                    <span className="px-2 py-0.5 rounded bg-neutral-800 border border-neutral-700">AI ANALYSIS</span>
+                    <span className="px-2 py-0.5 rounded bg-neutral-800 border border-neutral-700">FINTECH</span>
+                  </div>
                 </div>
-                <a href={lineLink} target="_blank" rel="noreferrer" className="px-6 py-2 rounded-lg border border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white transition">
-                    สอบถามรายละเอียด
+                <a href={lineLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-xs font-bold text-white hover:gap-3 transition">
+                  ลองใช้งาน LINE BOT <ArrowRight size={14} />
+                </a>
+              </div>
+            </div>
+
+            {/* Project 3 */}
+            <div className="bg-white/90 border border-neutral-300 rounded-3xl overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition">
+              <div className="h-56 bg-neutral-200 flex items-center justify-center p-6 text-center border-b border-neutral-200">
+                <span className="font-syne font-bold text-neutral-600 text-lg">RetroLens AI</span>
+              </div>
+              <div className="p-6 flex-grow flex flex-col justify-between">
+                <div>
+                  <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase">OPEN SOURCE</span>
+                  <h4 className="font-bold text-lg text-neutral-900 mt-1 mb-2">RetroLens AI</h4>
+                  <p className="text-xs text-neutral-600 font-light leading-relaxed mb-6">
+                    เว็บแอปเปลี่ยนภาพถ่ายเป็นสไตล์กล้องฟิล์มด้วย AI
+                  </p>
+                </div>
+                <a href={lineLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-xs font-bold text-neutral-900 hover:gap-3 transition">
+                  ดูโปรเจกต์ <ArrowRight size={14} />
                 </a>
               </div>
             </div>
 
           </div>
+
+          {/* Large Video Banner Overlay */}
+          <div className="relative rounded-3xl overflow-hidden h-[400px] bg-neutral-900 flex items-center justify-center shadow-2xl border border-neutral-800">
+            <div className="absolute inset-0 bg-neutral-900/70 backdrop-blur-xs z-10"></div>
+            <div className="relative z-20 text-center space-y-2">
+              <h2 className="font-syne text-5xl sm:text-7xl font-extrabold text-outline-white tracking-widest uppercase">AUTOMATE</h2>
+              <h2 className="font-syne text-5xl sm:text-7xl font-extrabold text-outline-white tracking-widest uppercase">YOUR</h2>
+              <h2 className="font-syne text-5xl sm:text-7xl font-extrabold text-outline-white tracking-widest uppercase">BUSINESS</h2>
+            </div>
+          </div>
+
         </div>
       </section>
 
-      {/* CTA Bottom Section */}
-      <section className="py-20 bg-gradient-to-b from-[#FAF7F2] to-[#F5F0E8] border-t border-[#EFE8DE]">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#2D2723]">พร้อมที่จะ Scale ธุรกิจของคุณหรือยังคะ?</h2>
-          <p className="text-[#5C534C] mb-10 text-lg font-light">
-            ModGoScale คือ Partner ที่ครบวงจรที่สุดสำหรับคุณ <br/>
-            ทักหาเราวันนี้ เพื่อเริ่มโปรเจกต์ของคุณทันทีค่ะ
-          </p>
-          <a 
-            href={lineLink} 
-            target="_blank" 
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-700 hover:to-amber-600 text-white px-8 py-4 rounded-full font-bold text-xl transition transform hover:scale-105 shadow-lg shadow-orange-200"
-          >
-            <MessageCircle size={24} />
-            แอดไลน์ปรึกษาฟรี: AI VibeCoding
-          </a>
+      {/* 7. INITIATE / TESTIMONIALS & CONTACT SECTION */}
+      <section id="initiate" className="py-24 px-6 sm:px-8 lg:px-12 scroll-mt-20 bg-[#F5F3EF]">
+        <div className="max-w-7xl mx-auto">
+          
+          {/* Voices of Success */}
+          <div className="text-center mb-16">
+            <span className="text-xs font-bold tracking-[0.25em] text-neutral-500 uppercase">VOICES OF SUCCESS</span>
+            <h2 className="font-syne text-3xl sm:text-4xl font-extrabold uppercase text-neutral-900 mt-2">สิ่งที่ผู้เรียนและลูกค้าพูดถึงเรา</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+            
+            <div className="bg-white/90 border border-neutral-300 p-8 rounded-3xl space-y-6 shadow-sm">
+              <div className="w-16 h-16 rounded-full bg-neutral-200 overflow-hidden mx-auto">
+                <div className="w-full h-full flex items-center justify-center font-bold text-neutral-500">คุณนิสา</div>
+              </div>
+              <p className="text-xs text-neutral-600 font-light leading-relaxed italic text-center">
+                "งานบัญชีที่เคยทำหลักชั่วโมง ตอนนี้กริ๊กเดียวเสร็จด้วย App Script ใช้เวลาไปบริหารภาพรวมธุรกิจได้เยอะมากเลยค่ะ"
+              </p>
+              <div className="text-center pt-2">
+                <h5 className="font-bold text-sm text-neutral-900">คุณนิสา</h5>
+                <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase">ACCOUNTING</span>
+              </div>
+            </div>
+
+            <div className="bg-white/90 border border-neutral-300 p-8 rounded-3xl space-y-6 shadow-sm">
+              <div className="w-16 h-16 rounded-full bg-neutral-200 overflow-hidden mx-auto">
+                <div className="w-full h-full flex items-center justify-center font-bold text-neutral-500">คุณกิ๊บ</div>
+              </div>
+              <p className="text-xs text-neutral-600 font-light leading-relaxed italic text-center">
+                "พอร์ตอสังหาดีขึ้นเยอะมาก ระบบ AI Vibe Coding ช่วยให้การทำคอนเทนต์เป็นเรื่องง่ายและลูกค้าทักไวขึ้นชัดเจน"
+              </p>
+              <div className="text-center pt-2">
+                <h5 className="font-bold text-sm text-neutral-900">คุณกิ๊บ</h5>
+                <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase">REAL ESTATE</span>
+              </div>
+            </div>
+
+            <div className="bg-white/90 border border-neutral-300 p-8 rounded-3xl space-y-6 shadow-sm">
+              <div className="w-16 h-16 rounded-full bg-neutral-200 overflow-hidden mx-auto">
+                <div className="w-full h-full flex items-center justify-center font-bold text-neutral-500">คุณพัด</div>
+              </div>
+              <p className="text-xs text-neutral-600 font-light leading-relaxed italic text-center">
+                "ระบบ Automate ตอบโจทย์การ Scale ธุรกิจมากๆ ช่วยลดงานจุกจิก และควบคุมคุณภาพได้ดีโดยไม่ต้องจ้างพนักงานเพิ่มเยอะ"
+              </p>
+              <div className="text-center pt-2">
+                <h5 className="font-bold text-sm text-neutral-900">คุณพัด</h5>
+                <span className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase">BUSINESS OWNER</span>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Final Call To Action Banner */}
+          <div className="border-t border-neutral-300/80 pt-16">
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-16">
+              <div>
+                <span className="text-xs font-bold tracking-[0.25em] text-neutral-500 uppercase">READY TO BUILD?</span>
+                <h2 className="font-syne text-5xl sm:text-7xl font-extrabold uppercase text-neutral-900 tracking-tight leading-none mt-2">
+                  LET'S <br/> SCALE.
+                </h2>
+              </div>
+
+              <div className="space-y-4 text-left lg:text-right">
+                <a 
+                  href={lineLink} 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-3 text-lg sm:text-xl font-bold text-neutral-900 border-b-2 border-neutral-900 pb-1 hover:pr-4 transition-all"
+                >
+                  Contact via LINE <ArrowRight size={22} />
+                </a>
+                <p className="text-xs text-neutral-500 font-light">Bangkok, Thailand</p>
+                <p className="text-xs font-bold tracking-wider text-neutral-800">LINE ID: @237DHTQP</p>
+              </div>
+            </div>
+
+            {/* Giant Watermark Text */}
+            <div className="overflow-hidden border-t border-neutral-300/60 pt-12 pb-6">
+              <span className="font-syne text-6xl sm:text-9xl font-extrabold text-neutral-300/40 tracking-tighter uppercase whitespace-nowrap block select-none">
+                goscale. modgoscale.
+              </span>
+            </div>
+
+          </div>
+
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#FAF7F2] border-t border-[#EFE8DE] py-10">
-        <div className="max-w-7xl mx-auto px-4 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-6">
-          <div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
-              ModGoScale
-            </span>
-            <p className="text-[#5C534C] mt-2 text-sm font-light">
-              Helping businesses grow with AI & Modern Web Technology.
-            </p>
-          </div>
-          <div className="text-[#5C534C] text-sm font-light">
-            © {new Date().getFullYear()} ModGoScale. All rights reserved.
-          </div>
+      <footer className="bg-[#F5F3EF] border-t border-neutral-300/80 py-8 px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] font-bold tracking-widest text-neutral-500 uppercase">
+          <div>© 2026 MODGOSCALE. ALL RIGHTS RESERVED.</div>
+          <div>ARCHITECTED IN BANGKOK</div>
         </div>
       </footer>
 
