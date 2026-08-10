@@ -1,4 +1,5 @@
 {
+  "name": "modgoscale",
   "buildCommand": "vite build",
   "outputDirectory": "dist",
   "framework": "vite"
