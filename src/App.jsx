@@ -131,9 +131,9 @@ const App = () => {
             {/* Desktop Navigation Links */}
             <div className="hidden md:flex space-x-8 lg:space-x-10 items-center text-xs font-semibold tracking-widest uppercase text-neutral-600">
               <button onClick={() => scrollToSection('concept')} className="hover:text-black transition">Concept</button>
-              <button onClick={() => scrollToSection('speaker')} className="hover:text-black transition">Keynote Speaker</button>
               <button onClick={() => scrollToSection('expertise')} className="hover:text-black transition">Expertise</button>
               <button onClick={() => scrollToSection('portfolio')} className="hover:text-black transition">Portfolio</button>
+              <button onClick={() => scrollToSection('speaker')} className="hover:text-black transition">Keynote Speaker</button>
               <button onClick={() => scrollToSection('initiate')} className="hover:text-black transition">Initiate</button>
               
               {/* Language Switcher */}
@@ -164,9 +164,9 @@ const App = () => {
         {isMenuOpen && (
           <div className="md:hidden bg-[#F5F3EF] border-b border-neutral-300 px-6 py-6 space-y-4 shadow-xl">
             <button onClick={() => scrollToSection('concept')} className="block w-full text-left py-2 text-sm font-semibold tracking-wider uppercase text-neutral-800 border-b border-neutral-200/60">Concept</button>
-            <button onClick={() => scrollToSection('speaker')} className="block w-full text-left py-2 text-sm font-semibold tracking-wider uppercase text-neutral-800 border-b border-neutral-200/60">Keynote Speaker</button>
             <button onClick={() => scrollToSection('expertise')} className="block w-full text-left py-2 text-sm font-semibold tracking-wider uppercase text-neutral-800 border-b border-neutral-200/60">Expertise</button>
             <button onClick={() => scrollToSection('portfolio')} className="block w-full text-left py-2 text-sm font-semibold tracking-wider uppercase text-neutral-800 border-b border-neutral-200/60">Portfolio</button>
+            <button onClick={() => scrollToSection('speaker')} className="block w-full text-left py-2 text-sm font-semibold tracking-wider uppercase text-neutral-800 border-b border-neutral-200/60">Keynote Speaker</button>
             <button onClick={() => scrollToSection('initiate')} className="block w-full text-left py-2 text-sm font-semibold tracking-wider uppercase text-neutral-800 border-b border-neutral-200/60">Initiate</button>
             <a 
               href={lineLink}
@@ -278,95 +278,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* 3. KEYNOTE SPEAKER SECTION (Girl in ICT by DCT) */}
-      <section id="speaker" className="py-16 sm:py-24 px-4 sm:px-8 lg:px-12 scroll-mt-20 bg-neutral-900 text-white">
-        <div className="max-w-7xl mx-auto">
-          
-          <div className="mb-4 sm:mb-6">
-            <span className="text-[11px] sm:text-xs font-bold tracking-[0.25em] text-neutral-400 uppercase">
-              KEYNOTE SPEAKER & CORPORATE TRAINER
-            </span>
-          </div>
-
-          <h2 className="font-heading text-3xl sm:text-5xl font-extrabold uppercase tracking-tight mb-4">
-            NATIONAL EVENT & WORKSHOP
-          </h2>
-          <p className="text-neutral-400 text-base sm:text-lg max-w-2xl font-light mb-10 sm:mb-12">
-            มดได้รับเกียรติเป็นวิทยากรบรรยายและจัด In-House Workshop ด้าน AI, Vibe Coding และ Digital Transformation ให้กับสถาบันและองค์กรระดับประเทศ
-          </p>
-
-          {/* Main Speaker Highlight Card */}
-          <div className="bg-neutral-800/80 border border-neutral-700/80 rounded-3xl p-6 sm:p-8 lg:p-12 mb-8 sm:mb-10 shadow-2xl">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              
-              <div className="lg:col-span-7 space-y-6">
-                <div className="flex flex-wrap gap-2">
-                  <span className="bg-neutral-700 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                    NATIONAL EVENT
-                  </span>
-                  <span className="bg-white text-neutral-900 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                    Girl in ICT by DCT
-                  </span>
-                </div>
-
-                <h3 className="text-xl sm:text-3xl font-bold leading-tight">
-                  สภาดิจิทัลเพื่อเศรษฐกิจและสังคมแห่งประเทศไทย (DCT)
-                </h3>
-
-                <p className="text-neutral-300 font-light leading-relaxed text-sm sm:text-base">
-                  วิทยากรบรรยายในโครงการ <strong>Girl in ICT</strong> จัดโดย <strong>สภาดิจิทัลเพื่อเศรษฐกิจและสังคมแห่งประเทศไทย</strong> ส่งเสริมศักยภาพของผู้หญิงและคนรุ่นใหม่ในการประยุกต์ใช้ AI สร้างนวัตกรรมดิจิทัล
-                </p>
-
-                <div className="bg-neutral-900/90 p-4 sm:p-5 rounded-2xl border border-neutral-700/60 space-y-3 text-xs sm:text-sm text-neutral-300 font-light">
-                  <div className="flex items-start gap-2.5">
-                    <CheckCircle size={16} className="text-white shrink-0 mt-0.5" />
-                    <span><strong>หัวข้อการบรรยาย:</strong> "Girl in ICT: ไม่เคยเขียนโค้ด ก็สร้างเว็บและแชตบอทได้ — สร้างระบบได้ด้วย AI จากไอเดีย สู่เว็บและแชตบอทที่ใช้งานจริง"</span>
-                  </div>
-                  <div className="flex items-start gap-2.5">
-                    <CheckCircle size={16} className="text-white shrink-0 mt-0.5" />
-                    <span><strong>แนวคิด Vibe Coding:</strong> ทุกไอเดียเป็นจริงได้ด้วย AI โดยไม่ต้องมีพื้นฐานการเขียนโค้ดมาก่อน</span>
-                  </div>
-                  <div className="flex items-start gap-2.5">
-                    <CheckCircle size={16} className="text-white shrink-0 mt-0.5" />
-                    <span><strong>เส้นทางเติบโต:</strong> จากการทำธุรกิจ สู่การเป็น AI Consultant ที่สร้างระบบอัตโนมัติให้ธุรกิจ</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="lg:col-span-5">
-                <img 
-                  src="/images/dct_speaking_vibe.jpg" 
-                  alt="Modty Speaker Girl in ICT" 
-                  className="rounded-2xl w-full h-[260px] sm:h-[320px] object-cover border border-neutral-700 shadow-xl"
-                />
-              </div>
-
-            </div>
-          </div>
-
-          {/* Speaker Event Photo Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
-            <div className="bg-neutral-800/60 border border-neutral-700/60 rounded-2xl overflow-hidden shadow-md">
-              <img src="/images/dct_speaking_consultant.jpg" alt="จาก Business สู่ AI Consultant" className="w-full h-52 sm:h-56 object-cover" />
-              <div className="p-4">
-                <h4 className="font-bold text-sm text-white mb-1">จาก Business สู่ AI Consultant</h4>
-                <p className="text-neutral-400 text-xs font-light">บรรยายถ่ายทอดการประยุกต์ใช้ AI แก้โจทย์ธุรกิจจริง</p>
-              </div>
-            </div>
-
-            <div className="bg-neutral-800/60 border border-neutral-700/60 rounded-2xl overflow-hidden shadow-md">
-              <img src="/images/dct_group.jpg" alt="DCT Event" className="w-full h-52 sm:h-full min-h-[200px] object-cover" />
-            </div>
-
-            <div className="bg-neutral-800/60 border border-neutral-700/60 rounded-2xl overflow-hidden shadow-md">
-              <img src="/images/dct_gift.jpg" alt="DCT Event" className="w-full h-52 sm:h-full min-h-[200px] object-cover" />
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* 4. DARK STATS BANNER WITH ANIMATED NUMBER COUNTER */}
+      {/* 3. DARK STATS BANNER WITH ANIMATED NUMBER COUNTER */}
       <section className="py-16 sm:py-20 bg-[#111111] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-neutral-800">
@@ -399,7 +311,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* 5. EXPERTISE SECTION */}
+      {/* 4. EXPERTISE SECTION */}
       <section id="expertise" className="py-16 sm:py-24 px-4 sm:px-8 lg:px-12 scroll-mt-20 bg-[#F5F3EF]">
         <div className="max-w-7xl mx-auto">
           
@@ -760,7 +672,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* 6. PORTFOLIO SECTION (02 WebApp & Website) */}
+      {/* 5. PORTFOLIO SECTION (02 WebApp & Website) */}
       <section id="portfolio" className="py-16 sm:py-24 px-4 sm:px-8 lg:px-12 scroll-mt-20 border-t border-neutral-300/60">
         <div className="max-w-7xl mx-auto">
           
@@ -850,6 +762,94 @@ const App = () => {
               <h2 className="font-heading text-4xl sm:text-7xl font-extrabold text-outline-white tracking-widest uppercase">AUTOMATE</h2>
               <h2 className="font-heading text-4xl sm:text-7xl font-extrabold text-outline-white tracking-widest uppercase">YOUR</h2>
               <h2 className="font-heading text-4xl sm:text-7xl font-extrabold text-outline-white tracking-widest uppercase">BUSINESS</h2>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 6. KEYNOTE SPEAKER SECTION (Girl in ICT by DCT) */}
+      <section id="speaker" className="py-16 sm:py-24 px-4 sm:px-8 lg:px-12 scroll-mt-20 bg-neutral-900 text-white">
+        <div className="max-w-7xl mx-auto">
+          
+          <div className="mb-4 sm:mb-6">
+            <span className="text-[11px] sm:text-xs font-bold tracking-[0.25em] text-neutral-400 uppercase">
+              KEYNOTE SPEAKER & CORPORATE TRAINER
+            </span>
+          </div>
+
+          <h2 className="font-heading text-3xl sm:text-5xl font-extrabold uppercase tracking-tight mb-4">
+            NATIONAL EVENT & WORKSHOP
+          </h2>
+          <p className="text-neutral-400 text-base sm:text-lg max-w-2xl font-light mb-10 sm:mb-12">
+            มดได้รับเกียรติเป็นวิทยากรบรรยายและจัด In-House Workshop ด้าน AI, Vibe Coding และ Digital Transformation ให้กับสถาบันและองค์กรระดับประเทศ
+          </p>
+
+          {/* Main Speaker Highlight Card */}
+          <div className="bg-neutral-800/80 border border-neutral-700/80 rounded-3xl p-6 sm:p-8 lg:p-12 mb-8 sm:mb-10 shadow-2xl">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              
+              <div className="lg:col-span-7 space-y-6">
+                <div className="flex flex-wrap gap-2">
+                  <span className="bg-neutral-700 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                    FEATURED SPEAKING EXPERIENCE
+                  </span>
+                  <span className="bg-white text-neutral-900 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                    Girl in ICT by DCT
+                  </span>
+                </div>
+
+                <h3 className="text-xl sm:text-3xl font-bold leading-tight">
+                  Girl in ICT by DCT — สภาดิจิทัลเพื่อเศรษฐกิจและสังคมแห่งประเทศไทย
+                </h3>
+
+                <p className="text-neutral-300 font-light leading-relaxed text-sm sm:text-base">
+                  วิทยากรบรรยายในโครงการ <strong>Girl in ICT</strong> จัดโดย <strong>สภาดิจิทัลเพื่อเศรษฐกิจและสังคมแห่งประเทศไทย</strong> ส่งเสริมศักยภาพของผู้หญิงและคนรุ่นใหม่ในการประยุกต์ใช้ AI สร้างนวัตกรรมดิจิทัล
+                </p>
+
+                <div className="bg-neutral-900/90 p-4 sm:p-5 rounded-2xl border border-neutral-700/60 space-y-3 text-xs sm:text-sm text-neutral-300 font-light">
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle size={16} className="text-white shrink-0 mt-0.5" />
+                    <span><strong>หัวข้อการบรรยาย:</strong> "Girl in ICT: ไม่เคยเขียนโค้ด ก็สร้างเว็บและแชตบอทได้ — สร้างระบบได้ด้วย AI จากไอเดีย สู่เว็บและแชตบอทที่ใช้งานจริง"</span>
+                  </div>
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle size={16} className="text-white shrink-0 mt-0.5" />
+                    <span><strong>แนวคิด Vibe Coding:</strong> ทุกไอเดียเป็นจริงได้ด้วย AI โดยไม่ต้องมีพื้นฐานการเขียนโค้ดมาก่อน</span>
+                  </div>
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle size={16} className="text-white shrink-0 mt-0.5" />
+                    <span><strong>เส้นทางเติบโต:</strong> จากการทำธุรกิจ สู่การเป็น AI Consultant ที่สร้างระบบอัตโนมัติให้ธุรกิจ</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="lg:col-span-5">
+                <img 
+                  src="/images/dct_speaking_vibe.jpg" 
+                  alt="Modty Speaker Girl in ICT" 
+                  className="rounded-2xl w-full h-[260px] sm:h-[320px] object-cover border border-neutral-700 shadow-xl"
+                />
+              </div>
+
+            </div>
+          </div>
+
+          {/* Speaker Event Photo Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+            <div className="bg-neutral-800/60 border border-neutral-700/60 rounded-2xl overflow-hidden shadow-md">
+              <img src="/images/dct_speaking_consultant.jpg" alt="จาก Business สู่ AI Consultant" className="w-full h-52 sm:h-56 object-cover" />
+              <div className="p-4">
+                <h4 className="font-bold text-sm text-white mb-1">จาก Business สู่ AI Consultant</h4>
+                <p className="text-neutral-400 text-xs font-light">บรรยายถ่ายทอดการประยุกต์ใช้ AI แก้โจทย์ธุรกิจจริง</p>
+              </div>
+            </div>
+
+            <div className="bg-neutral-800/60 border border-neutral-700/60 rounded-2xl overflow-hidden shadow-md">
+              <img src="/images/dct_group.jpg" alt="DCT Event" className="w-full h-52 sm:h-full min-h-[200px] object-cover" />
+            </div>
+
+            <div className="bg-neutral-800/60 border border-neutral-700/60 rounded-2xl overflow-hidden shadow-md">
+              <img src="/images/dct_gift.jpg" alt="DCT Event" className="w-full h-52 sm:h-full min-h-[200px] object-cover" />
             </div>
           </div>
 
